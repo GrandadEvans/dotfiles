@@ -135,6 +135,8 @@ call InitializeDirectories()
     iabbrev taht       that
     iabbrev Teh        The
     iabbrev teh        the
+    iabbrev @@         John@GrandadEvans.com
+    iabbrev ccopy      Copyright 2015 John Evans, all rights reserved.
 
 
 " Map the save and new tab keys
