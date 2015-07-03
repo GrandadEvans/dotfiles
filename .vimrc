@@ -145,7 +145,7 @@ noremap <C-t> <esc>:tabnew<CR>
 " Bind the :W to :w (typo)
 command! W w
 
-nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
+nnoremap <silent> <leader>ev :split $MYVIMRC<CR>
 nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Search the current file for what's currently in the search register and display matches
