@@ -146,7 +146,7 @@ noremap <C-t> <esc>:tabnew<CR>
 command! W w
 
 nnoremap <silent> <leader>ev :split $MYVIMRC<CR>
-nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
+nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
 
 " Search the current file for what's currently in the search register and display matches
 nnoremap <silent> <leader>gs :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
