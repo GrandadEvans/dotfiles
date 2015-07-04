@@ -689,3 +689,6 @@ nnoremap L $
 
 " Map jk in insert mode instead of pressing escape
 inoremap jk <esc>
+" Disables the default <esc> key in insert mode so that I have to use the
+" above
+inoremap <esc> <nop>
