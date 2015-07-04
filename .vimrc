@@ -682,3 +682,10 @@ echo ">^.^<"
 " Set a mapping up to convert the current word into uppercase
 inoremap <c-u> <esc>viWUEa
 nnoremap <c-u> viWUE
+
+" Map the H to the start of the line (as h is left, H is a stronger left)
+nnoremap H ^
+nnoremap L $
+
+" Map jk in insert mode instead of pressing escape
+inoremap jk <esc>
