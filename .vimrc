@@ -692,3 +692,17 @@ inoremap jk <esc>
 " Disables the default <esc> key in insert mode so that I have to use the
 " above
 inoremap <esc> <nop>
+
+" Disable the arrow keys
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+vnoremap <up> <nop>
+vnoremap <down> <nop>
+vnoremap <left> <nop>
+vnoremap <right> <nop>
