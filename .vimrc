@@ -706,3 +706,7 @@ vnoremap <up> <nop>
 vnoremap <down> <nop>
 vnoremap <left> <nop>
 vnoremap <right> <nop>
+
+" Set the indent on yml files to 2 spaces
+autocmd FileType yaml nnoremap <buffer> set tabstop=2
+autocmd FileType yaml nnoremap <buffer> set shiftwidth=2
