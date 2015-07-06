@@ -710,3 +710,14 @@ vnoremap <right> <nop>
 " Set the indent on yml files to 2 spaces
 autocmd FileType yaml nnoremap <buffer> set tabstop=2
 autocmd FileType yaml nnoremap <buffer> set shiftwidth=2
+
+" Set up a bunch of filetype specific abbreviations
+autocmd FileType php,js <buffer> :iabbrev fn function
+autocmd FileType php    <buffer> :iabbrev pubfn public function
+autocmd FileType php    <buffer> :iabbrev profn protected function
+autocmd FileType php    <buffer> :iabbrev prifn private function
+autocmd FileType php    <buffer> :iabbrev pubsfn public static function
+autocmd FileType php    <buffer> :iabbrev prosfn protected static function
+autocmd FileType php    <buffer> :iabbrev prisfn private static function
+autocmd FileType php,js <buffer> :iabbrev return No! No! No!
+autocmd FileType php,js <buffer> :iabbrev rn return
