@@ -169,10 +169,14 @@ set guioptions-=T  "remove toolbar
 ":set guioptions-=L  "remove left-hand scroll bar
 
 " Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+augroup last_position
+    autocmd!
+    autocmd BufReadPost *
+                \ if line("'\"") > 0 && line("'\"") <= line("$") |
+                \   exe "normal! g`\"" |
+                \ endif
+augroup END
+
 " Remember info about open buffers on close
 set viminfo^=%
 
@@ -445,7 +449,10 @@ Plugin 'fugitive.vim'
 "
 " 		in tree mode use :edit %:h to open parent tree
 " Each git buffer that open adds to the buffer list so autoclean them
-autocmd BufReadPost fugitive://* set bufhidden=delete
+augroup fugitive_autocmds
+    autocmd!
+    autocmd BufReadPost fugitive://* set bufhidden=delete
+augroup END
 " Add the branch name to the statusline
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
@@ -708,8 +715,11 @@ vnoremap <left> <nop>
 vnoremap <right> <nop>
 
 " Set the indent on yml files to 2 spaces
-autocmd FileType yaml nnoremap <buffer> set tabstop=2
-autocmd FileType yaml nnoremap <buffer> set shiftwidth=2
+augroup filetype_yaml
+    autocmd!
+    autocmd FileType yaml nnoremap <buffer> set tabstop=2
+    autocmd FileType yaml nnoremap <buffer> set shiftwidth=2
+augroup END
 
 " Set up a bunch of filetype specific abbreviations
 augroup filetype_php
