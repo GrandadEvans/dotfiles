@@ -147,6 +147,10 @@ noremap <C-t> <esc>:tabnew<CR>
 " Bind the :W to :w (typo)
 command! W w
 
+" Bind the Wall and Qall to the proper functions
+command! Qall qall
+command! Wall wall
+
 nnoremap <silent> <leader>ev :split $MYVIMRC<CR>
 nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
 
