@@ -712,12 +712,25 @@ autocmd FileType yaml nnoremap <buffer> set tabstop=2
 autocmd FileType yaml nnoremap <buffer> set shiftwidth=2
 
 " Set up a bunch of filetype specific abbreviations
-autocmd FileType php,js <buffer> :iabbrev fn function
-autocmd FileType php    <buffer> :iabbrev pubfn public function
-autocmd FileType php    <buffer> :iabbrev profn protected function
-autocmd FileType php    <buffer> :iabbrev prifn private function
-autocmd FileType php    <buffer> :iabbrev pubsfn public static function
-autocmd FileType php    <buffer> :iabbrev prosfn protected static function
-autocmd FileType php    <buffer> :iabbrev prisfn private static function
-autocmd FileType php,js <buffer> :iabbrev return No! No! No!
-autocmd FileType php,js <buffer> :iabbrev rn return
+augroup filetype_php
+    autocmd!
+    autocmd FileType php <buffer> :iabbrev fn function
+    autocmd FileType php <buffer> :iabbrev pubfn public function
+    autocmd FileType php <buffer> :iabbrev profn protected function
+    autocmd FileType php <buffer> :iabbrev prifn private function
+    autocmd FileType php <buffer> :iabbrev pubsfn public static function
+    autocmd FileType php <buffer> :iabbrev prosfn protected static function
+    autocmd FileType php <buffer> :iabbrev prisfn private static function
+    autocmd FileType php <buffer> :iabbrev return No! No! No!
+    autocmd FileType php <buffer> :iabbrev rn return
+
+
+augroup END
+
+" Javascript abbreviations
+augroup filetype_js
+    autocmd!
+    autocmd FileType js <buffer> :iabbrev fn function
+    autocmd FileType js <buffer> :iabbrev return No! No! No!
+    autocmd FileType js <buffer> :iabbrev rn return
+augroup END
