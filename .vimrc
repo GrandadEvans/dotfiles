@@ -745,8 +745,12 @@ augroup filetype_js
     autocmd FileType js <buffer> :iabbrev rn return
 augroup END
 
-" Markdown select (motion) for previous header
-:onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
 
-" Markdown select the uquals signs as well
-:onoremap ah :<c-u>execute "normal! ?^==\\+r:nohlsearch\rg_vk0"<cr>
+" Markdown auto commands
+augroup filetype_markdown
+    " Markdown select (motion) for previous header
+    autocmd FileType markdown <buffer> :onoremap  ih :<c-u>execute "normal! ?^[-=\\{2,}]\\+$\r:nohlsearch\rkvg_"<cr>
+
+    " Markdown select the uquals signs as well
+    autocmd FileType markdown <buffer> :onoremap  ah :<c-u>execute "normal! ?^[-=\\{2,}]\\+$\r:nohlsearch\rg_vk0"<cr>
+augroup END
