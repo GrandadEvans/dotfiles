@@ -1,0 +1,64 @@
+# ~/.tmuxinator/sky.yml
+
+name: sky
+root: ~/chef-solo
+
+pre: vagrant up
+
+windows:
+  - poker:
+      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
+      panes:
+        - VM:
+          - vagrant ssh
+          - cd /var/lamp/code/poker
+          - clear
+        - Editor:
+          - cd ../vmpokercode
+          - vim
+  - casino:
+      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
+      panes:
+        - VM:
+          - vagrant ssh
+          - cd /var/lamp/code/casino
+          - clear
+        - Editor:
+          - cd ../vmcasinocode
+          - vim
+  - casinoapi:
+      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
+      panes:
+        - VM:
+          - vagrant ssh
+          - cd /var/lamp/code/casinoapi
+          - clear
+        - Editor:
+          - cd ../vmcasinoapicode
+          - vim
+  - gamingadmin:
+      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
+      panes:
+        - VM:
+          - vagrant ssh
+          - cd /var/lamp/code/gamingadmin
+          - clear
+        - Editor:
+          - cd ../vmgamingadmincode
+          - vim
+  - skybetdev:
+      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
+      panes:
+        - VM:
+          - vagrant ssh
+          - cd /var/lamp/code/lamp
+          - clear
+        - Editor:
+          - cd ../vmcode
+          - vim
+  - glances:
+      - glances
+  - top:
+      - top
+  - IRC:
+      - weechat
