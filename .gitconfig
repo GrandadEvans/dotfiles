@@ -1,0 +1,108 @@
+~/.gitconfig:
+
+
+[user]
+    name = John Evans
+    email = John.Evans2@SkyBettingAndGaming.com
+
+[alias]
+    ap = add --patch
+    br = branch
+    ca = commit --amend
+    cb = !git rp HEAD
+    ci = commit
+    co = checkout
+    cp = cherry-pick
+    di = diff --no-prefix
+    dc = diff --cached --no-prefix
+    dn = push -u origin HEAD
+    du = diff --no-prefix @{u}
+    ff = !sh -c 'git push origin ${1:-release}^{}:master' -
+    fo = fetch origin --prune
+    ls = ls-files
+    ma = merge --abort
+    mr = !git uk | grep '\\.orig$' | xargs -r -I {} rm -rf "{}"
+    mt = mergetool
+    ob = !test "`git cb`" != "HEAD"
+    pl = pull origin
+    ra = rebase --abort
+    rc = rebase --continue
+    rh = !sh -c 'git reset --hard ${1-@{u\\}}' -
+    ri = rebase --interactive
+    rp = rev-parse --symbolic-full-name --abbrev-ref
+    rs = rebase --skip
+    rv = log HEAD --not @{u} --reverse -p
+    sd = !sh -c 'git stash drop stash@{${1-0}}' -
+    sf = !sh -c 'git stash -q && git diff stash@{0}^! ${@:-.} | git apply && git stash && git stash pop -q stash@{1} && git checkout ${@:-.}' -
+    sl = stash list
+    sp = !sh -c 'git stash pop stash@{${1-0}}' -
+    ss = !sh -c 'git stash show stash@{${1-0}} -p --no-prefix' -
+    st = status
+    uk = !sh -c 'git status -s ${@:-.} | grep -F "\\?\\?" | cut -c4-' -
+    up = !git fo && git rebase -p @{u}
+    ur = !sh -c 'git status -s ${@:-.} | grep -F "\\?\\?" | cut -c4- | xargs -I {} rm -rf "{}"' -
+
+[apply]
+    #whitespace = fix
+
+[bash]
+    #showDirtyState should be false on large repositories
+    showDirtyState = true
+    showUpstream = true
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = true
+    pager = true
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow
+    frag = magenta
+    old = red bold
+    new = blue bold
+
+[color "grep"]
+    match = red bold
+    filename = magenta
+    linenumber = green
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+    nobranch = red
+
+[core]
+    editor = vim
+    pager = less -FRSX
+    #whitespace = fix,tab-in-indent,tabwidth=4
+
+[diff]
+    renames = copy
+
+[diff "mwbdiff"]
+    textconv = mwbdump
+
+[merge]
+    tool = vimdiff
+
+[pager]
+    status = true
+
+[push]
+    default = upstream
+
+[tig]
+    tab-size = 4
+    commit-order = topo
+[branch]
+autosetuprebase = always
+

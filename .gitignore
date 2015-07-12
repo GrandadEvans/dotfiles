@@ -1,0 +1,17 @@
+# For the mac projects I work on :-(
+.DS_Store/
+
+# VCS
+.svn/
+.git/
+
+# Vim
+*~
+*.swp
+~/.vimswap/*
+~/.vimundo/*
+~/.vimviews/*
+#PHPStorm
+.idea/
+
+# Linux
