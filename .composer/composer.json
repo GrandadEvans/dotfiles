@@ -1,0 +1,13 @@
+{
+    "require": {
+        "squizlabs/php_codesniffer": "~2.3",
+        "pragmarx/laravelcs": "dev-master",
+        "phpmd/phpmd": "dev-master",
+        "pdepend/pdepend": "~2.0",
+        "laravel/homestead": "~2.0",
+		"php-console/php-console": "3.*",
+        "laravel/installer": "~1.1",
+        "fabpot/php-cs-fixer": "~1.9",
+        "behat/behat": "^3.0"
+    }
+}
