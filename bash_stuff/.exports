@@ -1,0 +1,45 @@
+#
+#
+#
+#
+#
+# Exports are now kept in ~/.zshrc
+#
+#
+#
+#
+#
+#
+#
+# Make vim the default editor
+export EDITOR="vim"
+# Don’t clear the screen after quitting a manual page
+export MANPAGER="less -X"
+
+# Larger bash history (allow 32³ entries; default is 500)
+export HISTSIZE=32768
+export HISTFILESIZE=$HISTSIZE
+
+# timestamps for bash history. www.debian-administration.org/users/rossen/weblog/1
+# saved for later analysis
+HISTTIMEFORMAT='%F %T '
+
+export HISTTIMEFORMAT
+
+PATH=$PATH:/opt/local/bin
+PATH=$PATH:/usr/bin
+PATH=$PATH:/usr/local/bin
+PATH=$PATH:/usr/sbin
+PATH=$PATH:/sbin
+PATH=$PATH:/home/john/.npm
+PATH=$PATH:/usr/local/lib/node_modules/npm/bin
+PATH=$PATH:/opt/local/sbin
+PATH=$PATH:/bin
+PATH=$PATH:/home/john/perl5/bin
+PATH=$PATH:/home/john/.rvm/bin
+PATH=$PATH:/usr/local/lib/node_modules/grunt-cli/bin
+PATH=$PATH:/home/john/.npm/grunt/0.3.17/package/bin/grunt
+PATH=$PATH:/usr/local/PHPStorm/bin:vendor/bin
+PATH=$PATH:~/.composer/vendor/bin
+PATH=$PATH:~/.composer/vendor/laravel/homestead
+export $PATH
