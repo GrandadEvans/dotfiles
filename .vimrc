@@ -724,14 +724,17 @@ augroup END
 " Set up a bunch of filetype specific abbreviations
 augroup filetype_php
     autocmd!
-    autocmd FileType php :iabbrev <buffer> fn function
-    autocmd FileType php :iabbrev <buffer> pubfn public function
-    autocmd FileType php :iabbrev <buffer> profn protected function
-    autocmd FileType php :iabbrev <buffer> prifn private function
-    autocmd FileType php :iabbrev <buffer> pubsfn public static function
-    autocmd FileType php :iabbrev <buffer> prosfn protected static function
-    autocmd FileType php :iabbrev <buffer> prisfn private static function
-    autocmd FileType php :iabbrev <buffer> return No! No! No!
+    autocmd FileType php :iabbrev <buffer> fn function<cr>{<cr>XContent<cr>}jkk0C
+    autocmd FileType php :iabbrev <buffer> pubf public function<cr>{<cr>XContent<cr>}jkk0C
+    autocmd FileType php :iabbrev <buffer> prof protected function<cr>{<cr>XContent<cr>}jkk0C
+    autocmd FileType php :iabbrev <buffer> prif private function<cr>{<cr>XContent<cr>}jkk0C
+    autocmd FileType php :iabbrev <buffer> pubsf public static function<cr>{<cr>XContent<cr>}jkk0C
+    autocmd FileType php :iabbrev <buffer> prosf protected static function<cr>{<cr>XContent<cr>}jkk0C
+    autocmd FileType php :iabbrev <buffer> prisf private static function<cr>{<cr>XContent<cr>}jkk0C
+    autocmd FileType php :iabbrev <buffer> cl class<cr>{<cr>XContent<cr>}jkk0C
+
+    autocmd FileType php :iabbrev <buffer> return No! Use "rn" abbreviation moron!
+    autocmd FileType php :iabbrev <buffer> ns namespace
     autocmd FileType php :iabbrev <buffer> rn return
 
 augroup END
