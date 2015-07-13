@@ -669,7 +669,7 @@ let g:php_cs_fixer_verbose = 0                    " Return the output of command
 nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
 nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
 
-
+Plugin 'joonty/vim-phpqa.git'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -685,10 +685,6 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 colorscheme candystripe
-
-
-" Show an ASCII art cat whenever vim starts
-echo ">^.^<"
 
 " Set a mapping up to convert the current word into uppercase
 inoremap <c-u> <esc>viWUEa
@@ -728,16 +724,15 @@ augroup END
 " Set up a bunch of filetype specific abbreviations
 augroup filetype_php
     autocmd!
-    autocmd FileType php <buffer> :iabbrev fn function
-    autocmd FileType php <buffer> :iabbrev pubfn public function
-    autocmd FileType php <buffer> :iabbrev profn protected function
-    autocmd FileType php <buffer> :iabbrev prifn private function
-    autocmd FileType php <buffer> :iabbrev pubsfn public static function
-    autocmd FileType php <buffer> :iabbrev prosfn protected static function
-    autocmd FileType php <buffer> :iabbrev prisfn private static function
-    autocmd FileType php <buffer> :iabbrev return No! No! No!
-    autocmd FileType php <buffer> :iabbrev rn return
-
+    autocmd FileType php :iabbrev <buffer> fn function
+    autocmd FileType php :iabbrev <buffer> pubfn public function
+    autocmd FileType php :iabbrev <buffer> profn protected function
+    autocmd FileType php :iabbrev <buffer> prifn private function
+    autocmd FileType php :iabbrev <buffer> pubsfn public static function
+    autocmd FileType php :iabbrev <buffer> prosfn protected static function
+    autocmd FileType php :iabbrev <buffer> prisfn private static function
+    autocmd FileType php :iabbrev <buffer> return No! No! No!
+    autocmd FileType php :iabbrev <buffer> rn return
 
 augroup END
 
