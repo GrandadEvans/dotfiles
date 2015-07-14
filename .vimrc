@@ -197,7 +197,7 @@ vnoremap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vnoremap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+" noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 
 
