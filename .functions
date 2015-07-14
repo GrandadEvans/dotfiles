@@ -102,9 +102,14 @@ function gvim {
 
 # Traverse up the directory using the int supplied
 function up {
-	local d=""
+
 	limit=$1
-	for ((i=1 ; i <= limit ; i++))
+
+    if [ ! $limit ]; then
+        limit=1
+    fi
+
+	for ((i=1 ; i <= $limit ; i++))
 	do
 		cd ../
 	done
@@ -143,6 +148,21 @@ function find-string() {
 	# the search results from files with large areas of indentation
 	        sed -re 's/\t/  /g'
 
+}
+
+function hl {
+	echo "\nListing the last $1 entries in your history, Master\n"
+	history | tail -$1
+}
+
+###########################################################
+# Function to automatically insert the git branch in commits
+###########################################################
+function gc {
+	local BRANCH=`git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'`
+	local MESSAGE=$1
+	local FULL="[refs $BRANCH] $MESSAGE"
+	git commit -m "$FULL"
 }
 
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
