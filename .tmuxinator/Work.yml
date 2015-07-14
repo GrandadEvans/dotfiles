@@ -1,0 +1,53 @@
+# ~/.tmuxinator/Work.yml
+
+name: Work
+root: ~/chef-solo
+
+pre: vagrant up
+
+windows:
+  - Poker:
+      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
+      panes:
+        - VM:
+          - vagrant ssh
+          - cd /var/lamp/code/poker
+          - clear
+        - Editor:
+          - cd ../vmpokercode
+          - vim
+  - Chef-solo:
+      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
+      panes:
+        - Proxy:
+          - sudo node proxy.js
+        - Term:
+          - cd /home/john/chef-solo
+          - clear
+  - SPDC:
+      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
+      panes:
+        - Term:
+          - cd /home/john/projects/poker-download-client
+          - clear
+        - Vim:
+          - cd /home/john/projects/poker-download-client
+          - vim
+  - VM:
+      - cd /home/john/chef-solo
+      - vagrant ssh
+  - Dotfiles:
+      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
+      panes:
+        - Term:
+          - cd ~/Dotfiles
+          - git pull
+          - clear
+        - Vim:
+          - vim
+  - Glances:
+      - glances
+  - General1:
+      panes:
+        - Term:
+          - cd /home/john
