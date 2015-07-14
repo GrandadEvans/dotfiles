@@ -6,7 +6,7 @@ root: ~/chef-solo
 pre: vagrant up
 
 windows:
-  - poker:
+  - Poker:
       layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
       panes:
         - VM:
@@ -16,49 +16,29 @@ windows:
         - Editor:
           - cd ../vmpokercode
           - vim
-  - casino:
+  - Chef-solo:
       layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
       panes:
-        - VM:
-          - vagrant ssh
-          - cd /var/lamp/code/casino
+        - Proxy:
+          - sudo node proxy.js
+        - Term:
+          - cd /home/john/chef-solo
           - clear
-        - Editor:
-          - cd ../vmcasinocode
-          - vim
-  - casinoapi:
+  - SPDC:
       layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
       panes:
-        - VM:
-          - vagrant ssh
-          - cd /var/lamp/code/casinoapi
+        - Term:
+          - cd /home/john/projects/poker-download-client
           - clear
-        - Editor:
-          - cd ../vmcasinoapicode
+        - Vim:
+          - cd /home/john/projects/poker-download-client
           - vim
-  - gamingadmin:
-      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
-      panes:
-        - VM:
-          - vagrant ssh
-          - cd /var/lamp/code/gamingadmin
-          - clear
-        - Editor:
-          - cd ../vmgamingadmincode
-          - vim
-  - skybetdev:
-      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
-      panes:
-        - VM:
-          - vagrant ssh
-          - cd /var/lamp/code/lamp
-          - clear
-        - Editor:
-          - cd ../vmcode
-          - vim
-  - glances:
+  - VM:
+      - cd /home/john/chef-solo
+      - vagrant ssh
+  - Glances:
       - glances
-  - top:
-      - top
-  - IRC:
-      - weechat
+  - General1:
+      panes:
+        - Term:
+          - cd /home/john
