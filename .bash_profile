@@ -1,9 +1,9 @@
-# Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
-# ~/.extra can be used for settings you don’t want to commit
-for file in ~/.{path,extra,bash_prompt,exports,aliases,functions}; do
-	[ -r "$file" ] && source "$file"
-done
-unset file
+source ~/.path
+source ~/.extra
+source ~/.bash_prompt
+source ~/.exports
+source ~/.aliases
+source ~/.functions
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
