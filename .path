@@ -1,2 +1,11 @@
-PATH=$PATH:~/.gem/ruby/2.0.0/bin
-PATH=$PATH:~/.local/share/bin
+PATH=$PATH:/home/john/.gem/ruby/2.0.0/bin
+PATH=$PATH:/home/john/.local/share/bin
+
+PATH=$PATH:/usr/bin
+PATH=$PATH:/usr/local/bin
+PATH=$PATH:/usr/sbin
+PATH=$PATH:/sbin
+PATH=$PATH:/home/john/.npm
+PATH=$PATH:/bin
+PATH=$PATH:/home/john/.composer/vendor/bin
+export PATH
