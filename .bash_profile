@@ -1,5 +1,5 @@
 source ~/.path
-source ~/.extra
+source ~/.extras
 source ~/.bash_prompt
 source ~/.exports
 source ~/.aliases
