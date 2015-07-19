@@ -16,3 +16,13 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+# Include z.sh
+Z_PREFIX="/home/john/.local/share/z"
+Z_FILE="/z.sh"
+if [ -f "$Z_PREFIX$Z_FILE" ]; then
+    source "$Z_PREFIX$Z_FILE"
+else
+    git clone git@github.com:rupa/z.git "$Z_PREFIX"
+    source "$Z_PREFIX$Z_FILE"
+fi
