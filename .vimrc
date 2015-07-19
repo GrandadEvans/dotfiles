@@ -235,7 +235,7 @@ Plugin 'taglist.vim'
 " Set the toggle key
 nnoremap <silent> <F8> :TlistToggle<CR>
 " Open the taglist on vim start-up
-let Tlist_Auto_Open = 1
+let Tlist_Auto_Open = 0
 " Press o to open in new window
 " Press p to open the definition and stay in the taglist
 " Open a fold +
@@ -754,6 +754,8 @@ augroup END
 
 " Markdown auto commands
 augroup filetype_markdown
+    autocmd!
+
     " Markdown select (motion) for previous header
     autocmd FileType markdown <buffer> :onoremap  ih :<c-u>execute "normal! ?^[-=\\{2,}]\\+$\r:nohlsearch\rkvg_"<cr>
 
