@@ -1,6 +1,6 @@
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit
-for file in ~/.{extra,bash_prompt,exports,aliases,functions}; do
+for file in ~/.{path,extra,bash_prompt,exports,aliases,functions}; do
 	[ -r "$file" ] && source "$file"
 done
 unset file
@@ -17,5 +17,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# Remove the caps lock key mapping making the caps lock a standard shift key
-xmodmap $HOME/.Xmodmap
+# Include z.sh
+if [ -f ~/.local/share/z/z.sh ]; then
+    source ~/.local/share/z/z.sh
+else
+    git clone git@github.com:rupa/z.git ~/.local/share/z
+    source ~/.local/share/z/z.sh
+fi
