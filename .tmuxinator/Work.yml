@@ -41,7 +41,6 @@ windows:
       panes:
         - Term:
           - cd ~/Dotfiles
-          - git pull
           - clear
         - Vim:
           - vim
