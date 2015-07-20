@@ -669,6 +669,10 @@ let g:php_cs_fixer_verbose = 0                    " Return the output of command
 nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
 nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
 
+
+" Emmet
+"let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.dotfiles/emmet.json')), "\n"))
+
 Plugin 'joonty/vim-phpqa.git'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
