@@ -678,6 +678,8 @@ Plugin 'joonty/vim-phpqa.git'
 
 Bundle "wookiehangover/jshint.vim"
 
+" Install some decent javascript syntax colouring
+Plugin 'othree/yajs.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -771,4 +773,4 @@ augroup END
 " in all buffers use <leader>sh to hide the latest search results
 nnoremap <leader>sh :set nohlsearch<cr>
 " and <leader>ss to show the search results
-nnoremap <leader>ss :set hlsearch
+nnoremap <leader>ss :set hlsearch<cr>
