@@ -750,9 +750,10 @@ augroup END
 " Javascript abbreviations
 augroup filetype_js
     autocmd!
-    autocmd FileType js <buffer> :iabbrev fn function
-    autocmd FileType js <buffer> :iabbrev return No! No! No!
-    autocmd FileType js <buffer> :iabbrev rn return
+    autocmd FileType js :iabbrev <buffer> return No! Use "rn" abbreviation moron!
+    autocmd FileType js :iabbrev <buffer> fn function
+    autocmd FileType js :iabbrev <buffer> return No! No! No!
+    autocmd FileType js :iabbrev <buffer> rn return
 augroup END
 
 
@@ -766,3 +767,8 @@ augroup filetype_markdown
     " Markdown select the uquals signs as well
     autocmd FileType markdown <buffer> :onoremap  ah :<c-u>execute "normal! ?^[-=\\{2,}]\\+$\r:nohlsearch\rg_vk0"<cr>
 augroup END
+
+" in all buffers use <leader>sh to hide the latest search results
+nnoremap <leader>sh :set nohlsearch<cr>
+" and <leader>ss to show the search results
+nnoremap <leader>ss :set hlsearch
