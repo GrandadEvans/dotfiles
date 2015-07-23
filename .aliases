@@ -21,7 +21,7 @@ alias car="cat"
 # Time to add some git aliases
 alias gs="git status"
 alias gaa="git add --all"
-alias gps="git push"
+alias gpu="git push"
 alias gpl="git pull"
 alias t="tig"
 
