@@ -686,8 +686,10 @@ Plugin 'joonty/vim-phpqa.git'
 
 Bundle "wookiehangover/jshint.vim"
 
+" This keep dropping random characters everywhere and it makes it very
+" difficule to code
 " Install some decent javascript syntax colouring
-Plugin 'othree/yajs.vim'
+"Plugin 'othree/yajs.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
