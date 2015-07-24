@@ -44,7 +44,7 @@ function makeLink() {
                 return
             elif [[ $REPLY =~ ^[aA]*$ ]]; then
                 echo -e "Overwriting all existing links"
-                LINK_OVERWRITE=true
+                OVERWRITE_LINKS=true
             elif [[ $REPLY =~ ^[Qq]*$ ]]; then
                 echo -e "Shit man! I didn't mean to offend you!"
                 return
@@ -81,6 +81,8 @@ function makeLinks() {
     makeLink /home/john/dotfiles/.vimrc ~
 }
 
+makeLinks()
+
 echo -e "\nSourcing ~/.bashrc"
 source ~/.bashrc
 
@@ -101,6 +103,7 @@ if ! `which composer`; then
     echo -e "Composer is NOT installed...wait, out!"
     curl -sS https://getcomposer.org/installer | php
     echo -e "\nMoving the newly created composer.phar to ~/.local/share/bin/composer"
+
     mv composer.phar ~/.local/share/bin/composer
 fi
 if [ -f ~/.composer/composer.lock ]; then
