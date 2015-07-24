@@ -675,6 +675,10 @@ nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
 
 Plugin 'joonty/vim-phpqa.git'
 " All of your Plugins must be added before the following line
+
+Bundle "wookiehangover/jshint.vim"
+
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
