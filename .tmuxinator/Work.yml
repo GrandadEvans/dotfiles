@@ -40,9 +40,10 @@ windows:
       layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
       panes:
         - Term:
-          - cd ~/Dotfiles
+          - cd ~/dotfiles
           - clear
         - Vim:
+          - cd ~/dotfiles
           - vim
   - Glances:
       - glances
