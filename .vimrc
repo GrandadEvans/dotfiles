@@ -732,10 +732,31 @@ vnoremap <down> <nop>
 vnoremap <left> <nop>
 vnoremap <right> <nop>
 
+
+"""""""""""""""""""""""""""""""""""""""""""""
+" Strip trailing spaces from the end of lines
+"
+" This is used in php, js, md & py files
+"""""""""""""""""""""""""""""""""""""""""""""
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s = @/
+    let l  = line(".")
+    let c  = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and
+    " cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
 " Set the indent on yml files to 2 spaces
 augroup filetype_yaml
     if has("autocmd")
         autocmd!
+
+        autocmd BufWritePre *.yml :call <SID>StripTrailingWhitespaces()
+
         autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
         autocmd FileType yaml nnoremap <buffer> set tabstop=2
         autocmd FileType yaml nnoremap <buffer> set shiftwidth=2
@@ -746,6 +767,9 @@ augroup END
 augroup filetype_php
     if has("autocmd")
         autocmd!
+
+        autocmd BufWritePre *.php :call <SID>StripTrailingWhitespaces()
+
         autocmd FileType php :iabbrev <buffer> fn function<cr>{<cr>XContent<cr>}jkk0C
         autocmd FileType php :iabbrev <buffer> pubf public function<cr>{<cr>XContent<cr>}jkk0C
         autocmd FileType php :iabbrev <buffer> prof protected function<cr>{<cr>XContent<cr>}jkk0C
@@ -766,6 +790,9 @@ augroup END
 augroup filetype_js
     if has("autocmd")
         autocmd!
+
+        autocmd BufWritePre *.js :call <SID>StripTrailingWhitespaces()
+
         autocmd FileType js :iabbrev <buffer> return No! Use "rn" abbreviation moron!
         autocmd FileType js :iabbrev <buffer> fn function
         autocmd FileType js :iabbrev <buffer> return No! No! No!
@@ -778,6 +805,8 @@ augroup END
 augroup filetype_markdown
     if has("autocmd")
         autocmd!
+
+        autocmd BufWritePre *.md :call <SID>StripTrailingWhitespaces()
 
         " Markdown select (motion) for previous header
         autocmd FileType markdown <buffer> :onoremap  ih :<c-u>execute "normal! ?^[-=\\{2,}]\\+$\r:nohlsearch\rkvg_"<cr>
