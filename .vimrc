@@ -736,6 +736,7 @@ vnoremap <right> <nop>
 augroup filetype_yaml
     if has("autocmd")
         autocmd!
+        autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
         autocmd FileType yaml nnoremap <buffer> set tabstop=2
         autocmd FileType yaml nnoremap <buffer> set shiftwidth=2
     endif
