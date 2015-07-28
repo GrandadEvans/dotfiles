@@ -181,13 +181,15 @@ set guioptions-=T  "remove toolbar
 ":set guioptions-=L  "remove left-hand scroll bar
 
 " Return to last edit position when opening files (You want this!)
-augroup last_position
-    autocmd!
-    autocmd BufReadPost *
-                \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                \   exe "normal! g`\"" |
-                \ endif
-augroup END
+if has("autocmd")
+    augroup last_position
+        autocmd!
+        autocmd BufReadPost *
+                    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+                    \   exe "normal! g`\"" |
+                    \ endif
+    augroup END
+endif
 
 " Remember info about open buffers on close
 set viminfo^=%
@@ -457,10 +459,12 @@ Plugin 'fugitive.vim'
 "
 " 		in tree mode use :edit %:h to open parent tree
 " Each git buffer that open adds to the buffer list so autoclean them
-augroup fugitive_autocmds
-    autocmd!
-    autocmd BufReadPost fugitive://* set bufhidden=delete
-augroup END
+if has ("autocmd")
+    augroup fugitive_autocmds
+        autocmd!
+        autocmd BufReadPost fugitive://* set bufhidden=delete
+    augroup END
+endif
 " Add the branch name to the statusline
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
@@ -730,48 +734,56 @@ vnoremap <right> <nop>
 
 " Set the indent on yml files to 2 spaces
 augroup filetype_yaml
-    autocmd!
-    autocmd FileType yaml nnoremap <buffer> set tabstop=2
-    autocmd FileType yaml nnoremap <buffer> set shiftwidth=2
+    if has("autocmd")
+        autocmd!
+        autocmd FileType yaml nnoremap <buffer> set tabstop=2
+        autocmd FileType yaml nnoremap <buffer> set shiftwidth=2
+    endif
 augroup END
 
 " Set up a bunch of filetype specific abbreviations
 augroup filetype_php
-    autocmd!
-    autocmd FileType php :iabbrev <buffer> fn function<cr>{<cr>XContent<cr>}jkk0C
-    autocmd FileType php :iabbrev <buffer> pubf public function<cr>{<cr>XContent<cr>}jkk0C
-    autocmd FileType php :iabbrev <buffer> prof protected function<cr>{<cr>XContent<cr>}jkk0C
-    autocmd FileType php :iabbrev <buffer> prif private function<cr>{<cr>XContent<cr>}jkk0C
-    autocmd FileType php :iabbrev <buffer> pubsf public static function<cr>{<cr>XContent<cr>}jkk0C
-    autocmd FileType php :iabbrev <buffer> prosf protected static function<cr>{<cr>XContent<cr>}jkk0C
-    autocmd FileType php :iabbrev <buffer> prisf private static function<cr>{<cr>XContent<cr>}jkk0C
-    autocmd FileType php :iabbrev <buffer> cl class<cr>{<cr>XContent<cr>}jkk0C
+    if has("autocmd")
+        autocmd!
+        autocmd FileType php :iabbrev <buffer> fn function<cr>{<cr>XContent<cr>}jkk0C
+        autocmd FileType php :iabbrev <buffer> pubf public function<cr>{<cr>XContent<cr>}jkk0C
+        autocmd FileType php :iabbrev <buffer> prof protected function<cr>{<cr>XContent<cr>}jkk0C
+        autocmd FileType php :iabbrev <buffer> prif private function<cr>{<cr>XContent<cr>}jkk0C
+        autocmd FileType php :iabbrev <buffer> pubsf public static function<cr>{<cr>XContent<cr>}jkk0C
+        autocmd FileType php :iabbrev <buffer> prosf protected static function<cr>{<cr>XContent<cr>}jkk0C
+        autocmd FileType php :iabbrev <buffer> prisf private static function<cr>{<cr>XContent<cr>}jkk0C
+        autocmd FileType php :iabbrev <buffer> cl class<cr>{<cr>XContent<cr>}jkk0C
 
-    autocmd FileType php :iabbrev <buffer> return No! Use "rn" abbreviation moron!
-    autocmd FileType php :iabbrev <buffer> ns namespace
-    autocmd FileType php :iabbrev <buffer> rn return
+        autocmd FileType php :iabbrev <buffer> return No! Use "rn" abbreviation moron!
+        autocmd FileType php :iabbrev <buffer> ns namespace
+        autocmd FileType php :iabbrev <buffer> rn return
+    endif
 
 augroup END
 
 " Javascript abbreviations
 augroup filetype_js
-    autocmd!
-    autocmd FileType js :iabbrev <buffer> return No! Use "rn" abbreviation moron!
-    autocmd FileType js :iabbrev <buffer> fn function
-    autocmd FileType js :iabbrev <buffer> return No! No! No!
-    autocmd FileType js :iabbrev <buffer> rn return
+    if has("autocmd")
+        autocmd!
+        autocmd FileType js :iabbrev <buffer> return No! Use "rn" abbreviation moron!
+        autocmd FileType js :iabbrev <buffer> fn function
+        autocmd FileType js :iabbrev <buffer> return No! No! No!
+        autocmd FileType js :iabbrev <buffer> rn return
+    endif
 augroup END
 
 
 " Markdown auto commands
 augroup filetype_markdown
-    autocmd!
+    if has("autocmd")
+        autocmd!
 
-    " Markdown select (motion) for previous header
-    autocmd FileType markdown <buffer> :onoremap  ih :<c-u>execute "normal! ?^[-=\\{2,}]\\+$\r:nohlsearch\rkvg_"<cr>
+        " Markdown select (motion) for previous header
+        autocmd FileType markdown <buffer> :onoremap  ih :<c-u>execute "normal! ?^[-=\\{2,}]\\+$\r:nohlsearch\rkvg_"<cr>
 
-    " Markdown select the uquals signs as well
-    autocmd FileType markdown <buffer> :onoremap  ah :<c-u>execute "normal! ?^[-=\\{2,}]\\+$\r:nohlsearch\rg_vk0"<cr>
+        " Markdown select the uquals signs as well
+        autocmd FileType markdown <buffer> :onoremap  ah :<c-u>execute "normal! ?^[-=\\{2,}]\\+$\r:nohlsearch\rg_vk0"<cr>
+    endif
 augroup END
 
 " in all buffers use <leader>sh to hide the latest search results
