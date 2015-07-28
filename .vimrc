@@ -10,6 +10,14 @@ set tabstop=4
 set shiftwidth=4
 " And always set the indent to a multiple of shiftwidth
 set shiftround
+" Backspace over tabs as if they were tabs and not 4 separate backspaces
+set softtabstop=4
+
+" Set the editor to show tab and EOL characters
+set listchars=tab:▸-,eol:¬
+"Invisible character colors 
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
 
 " Copy the indent from the above line
 set autoindent
@@ -198,10 +206,6 @@ vnoremap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Remove the Windows ^M - when the encodings gets messed up
 " noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-
-
-
 if has("mac") || has("macunix")
   nmap <D-j> <M-j>
   nmap <D-k> <M-k>
