@@ -733,6 +733,22 @@ vnoremap <left> <nop>
 vnoremap <right> <nop>
 
 
+" If I start working with tabs these shortcuts will allow for faster
+" navigation
+noremap <C-S-]> gt
+noremap <C-S-[> gT
+noremap <C-1> 1gt
+noremap <C-2> 2gt
+noremap <C-3> 3gt
+noremap <C-4> 4gt
+noremap <C-5> 5gt
+noremap <C-6> 6gt
+noremap <C-7> 7gt
+noremap <C-8> 8gt
+noremap <C-9> 9gt
+noremap <C-0> :tablast<CR>
+
+
 """""""""""""""""""""""""""""""""""""""""""""
 " Strip trailing spaces from the end of lines
 "
