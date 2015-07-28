@@ -742,6 +742,17 @@ Bundle "wookiehangover/jshint.vim"
     Plugin 'godlygeek/tabular'
 " }}}
 
+
+" Gundo {{{
+    Plugin 'sjl/gundo.vim'
+    nnoremap <F6> :GundoToggle<CR>
+    " Press Enter on an entry to select the entry
+    " Press "p" in order to preview the undo entry
+    "
+    " Open Gundo on the right
+    let g:gundo_right = 1
+" }}}
+
 " End of Vundle stuff {{{
     call vundle#end()            " required
     filetype plugin indent on    " required
