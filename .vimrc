@@ -1,7 +1,9 @@
-" Vundle prelims
+" Vundle prelims {{{
 set nocompatible              " be iMproved, required
 filetype off                  " required
+" }}}
 
+" Configure spaces not tabss {{{
 " When the tab key is pressed then insert spaces
 set expandtab
 " how many spaces to insert?
@@ -12,66 +14,85 @@ set shiftwidth=4
 set shiftround
 " Backspace over tabs as if they were tabs and not 4 separate backspaces
 set softtabstop=4
+" }}}
 
-" Set the editor to show tab and EOL characters
+" Set the editor to show tab and EOL characters {{{
 set listchars=tab:▸-,eol:¬
 "Invisible character colors 
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
+" }}}
 
-" Copy the indent from the above line
+" Copy the indent from the above line {{{
 set autoindent
+" }}}
 
-" Search around line breaks
+" Search around line breaks {{{
 set wrapscan
+" }}}
 
+" Set ignorecase {{{
 set ignorecase
+" }}}
 
-" Make the command line 2 lines high
+" Make the command line 2 lines high {{{
 set ch=2
+" }}}
 
-" Allow backspacing over indents, eol and start of an insert
+" Allow backspacing over indents, eol and start of an insert {{{
 set backspace=2
+" }}}
 
-" Make sure unsaved buffers are allowed to be hidden without being saved
+" Make sure unsaved buffers are allowed to be hidden without being saved {{{
 set hidden
+" }}}
 
-" Make the change <motion> actions put a $ at the end instead of just deleting
+" Make the change <motion> actions put a $ at the end instead of just deleting {{{
 set cpoptions=cesB$
+" }}}
 
-" Keep a bit more history
+" Keep a bit more history {{{
 set history=1000
+" }}}
 
-" Enable search highlighting
+" Enable search highlighting {{{
 set hlsearch
+" }}}
 
-" Read a file that has changed on disk
+" Read a file that has changed on disk {{{
 set autoread
+" }}}
 
-" Turn the line numbers on
+" Turn the line numbers on {{{
 set nu
 set relativenumber
+" }}}
 
-" Set the leader up to be the comma
+" Set the leader up to be the comma {{{
 let mapleader=","
+" }}}
 
-" Don't syntax highlight lines that are too long
+" Don't syntax highlight lines that are too long {{{
 set synmaxcol=1024
+" }}}
 
-" Set up backups
+" Set up backups {{{
 if has('persistent_undo')
 	set undofile
 	set undolevels=1000
 	set undoreload=10000
 endif
+" End of backups }}}
 
-" Show matching brackets
+" Show matching brackets {{{
 set showmatch
+" }}}
 
-" For times when you forget to set sudo
+" For times when you forget to set sudo {{{
 cmap w!! W !sudo tee % >/dev/null
+" }}}
 
-
+" Create specific directories for backups & swaps etc {{{
 function! InitializeDirectories()
     let separator = "."
     let parent = $HOME
@@ -102,11 +123,9 @@ function! InitializeDirectories()
     endfor
 endfunction
 call InitializeDirectories()
+" End of creating specific directories }}}
 
-"=============================================================================
-" Fix constant spelling mistakes
-"=============================================================================
-
+" Fix constant spelling mistakes {{{
     iabbrev Acheive    Achieve
     iabbrev acheive    achieve
     iabbrev Alos       Also
@@ -145,23 +164,29 @@ call InitializeDirectories()
     iabbrev teh        the
     iabbrev @@         John@GrandadEvans.com
     iabbrev ccopy      Copyright 2015 John Evans, all rights reserved.
+" End of typos }}}
 
-
-" Map the save and new tab keys
+" Map the save and new tab keys {{{
 noremap <C-s> <esc>:w<CR>
 inoremap <C-s> <esc>:w<CR>
 noremap <C-t> <esc>:tabnew<CR>
+" }}}
 
-" Bind the :W to :w (typo)
+" Bind the :W to :w (typo) {{{
 command! W w
+" }}}
 
-" Bind the Wall and Qall to the proper functions
+" Bind the Wall and Qall to the proper functions {{{
 command! Qall qall
 command! Wall wall
+" }}}
 
+" Edit and source ~/.vimrc {{{
 nnoremap <silent> <leader>ev :split $MYVIMRC<CR>
 nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
+" }}}
 
+" Custom searches {{{
 " Search the current file for what's currently in the search register and display matches
 nnoremap <silent> <leader>gs :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
 
@@ -170,17 +195,21 @@ nnoremap <silent> <leader>gw :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:
 
 " Search the current file for the WORD under the cursor and display matches
 nnoremap <silent> <leader>gW :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+" End of custom searches }}}
 
-" Automatically save the states of the buffers on exit and load them on entry
+" Automatically save the states of the buffers on exit and load them on entry {{{
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
+" }}}
 
+" Set GUI Options {{{
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 ":set guioptions-=r  "remove right-hand scroll bar
 ":set guioptions-=L  "remove left-hand scroll bar
+" End of GUI options}}}
 
-" Return to last edit position when opening files (You want this!)
+" Return to last edit position when opening files (You want this!) {{{
 if has("autocmd")
     augroup last_position
         autocmd!
@@ -190,23 +219,20 @@ if has("autocmd")
                     \ endif
     augroup END
 endif
+" }}}
 
-" Remember info about open buffers on close
+" Remember info about open buffers on close {{{
 set viminfo^=%
+" }}}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remap VIM 0 to first non-blank character
-noremap 0 ^
-
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac {{{
 nnoremap <M-k> mz:m-2<cr>`z
 nnoremap <M-j> mz:m+<cr>`z
 vnoremap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vnoremap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+" }}}
 
-" Remove the Windows ^M - when the encodings gets messed up
+" Remove the Windows ^M - when the encodings gets messed up {{{
 " noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 if has("mac") || has("macunix")
   nmap <D-j> <M-j>
@@ -214,13 +240,15 @@ if has("mac") || has("macunix")
   vmap <D-j> <M-j>
   vmap <D-k> <M-k>
 endif
+" }}}
 
-
-" Set the font
+" Set the font {{{
 if has('gui_running')
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
 endif
+" }}}
 
+" Initialise Vundle {{{
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -229,14 +257,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+" }}}
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"http://vim.wikia.com/wiki/Easier_buffer_switching
-"""""""""""""""""""
-"     Taglist
-"""""""""""""""""""
+"     Taglist {{{
 Plugin 'taglist.vim'
 " Set the toggle key
 nnoremap <silent> <F8> :TlistToggle<CR>
@@ -285,12 +308,9 @@ let Tlist_Auto_Open = 0
 
     " Automatically highlight the current tag in the taglist
     let Tlist_Auto_Highlight_Tag=1
+" }}}
 
-
-
-""""""""""""""""""""
-" NERDTree
-""""""""""""""""""""
+" NERDTree {{{
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 "Map the usual nerdtree key to the toggle
@@ -329,18 +349,18 @@ nnoremap <silent> <F3> :NERDTreeToggle<CR>
 "A zoom (minimize/maximize)M nerdtree window
 let NERDTreeQuitOnOpen=0
 let NERDTreeShowHidden=1
+" }}}
 
-
-"""""""""""""""""""""""
-" SnipMate
-"""""""""""""""""""""""
+" SnipMate {{{
 "Plugin 'snipMate'
 "let g:snips_author = "John Evans"
+" }}}
 
-"" map :c-all to copy all
-"noremap <Leader>c-all :%y<CR>
+" map :c-all to copy all {{{
+noremap <Leader>c-all :%y<CR>
+" }}}
 
-"" map :hll to highlight long line
+"" map :hll to highlight long line {{{
 "nnoremap <Leader>hll :call<SID>LongLineHLToggle()<CR>
 
 "hi OverLength ctermbg=none cterm=none
@@ -355,26 +375,26 @@ let NERDTreeShowHidden=1
 "        echo "Long lines unhighlighted"
 "    endif
 "endfunction
+" }}}
 
-"" Show the tabline if there are 2 or more tabs
-""set showtabline=2
+" Show the tabline if there are 2 or more tabs {{{
+set showtabline=2
+" }}}
 
-"" Press Enter to insert a new line below the cursor
-"" Press Shift Enter to insert a new line before the current line
-"" Both commands do not take you into INSERT mode
-"noremap <S-Enter> O<Esc>
-"noremap <CR> o<Esc>
+" Press Enter to insert a new line below the cursor & Shift-Enter for line below {{{
+" Press Shift Enter to insert a new line before the current line
+" Both commands do not take you into INSERT mode
+noremap <S-Enter> O<Esc>
+noremap <CR> o<Esc>
+" }}}
 
-
-"" Highlight whitespace at the end of a line in blue
+" Highlight whitespace at the end of a line in blue {{{
 "" http://vimbits.com/bits/259
 "highlight WhitespaceEOL ctermbg=Blue guibg=Blue
 "match WhitespaceEOL /\s\+$/
+" }}}
 
-
-"""""""""""""""""""""""
-" Mini buffer explorer
-"""""""""""""""""""""""
+" Mini buffer explorer {{{
 Plugin 'minibufexpl.vim'
 " Use tabs and shift-tab to cycle through open buffer list
 "map <Leader>mbt :MBEToggle<cr>
@@ -385,27 +405,20 @@ Plugin 'minibufexpl.vim'
 ":MBEbp switch to previous normal buffer in current window
 ":MBEbf move forward in recent buffer list
 ":MBEbb move backwards in recent buffer list
-noremap <C-J>     <C-W>j
-noremap <C-K>     <C-W>k
-noremap <C-H>     <C-W>h
-noremap <C-L>     <C-W>l
-
-" If you like control + arrow key to navigate windows
-" then perform the remapping
-"
-noremap <C-Down>  <C-W>j
-noremap <C-Up>    <C-W>k
-noremap <C-Left>  <C-W>h
-noremap <C-Right> <C-W>l
-
 noremap <C-TAB>   :MBEbn<CR>
 noremap <C-S-TAB> :MBEbp<CR>
 " use single click in the buffer explorer bar
 let g:miniBufExplUseSingleClick = 1
+" }}}
 
-"""""""""""""""""""""""
-" Fugitive
-"""""""""""""""""""""""
+" Easy window navigation {{{
+noremap <C-J>     <C-W>j
+noremap <C-K>     <C-W>k
+noremap <C-H>     <C-W>h
+noremap <C-L>     <C-W>l
+" }}}
+
+" Fugitive {{{
 Plugin 'fugitive.vim'
 " :Git run any arbitary git command
 " :Gread read from index
@@ -483,17 +496,20 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 " :Grep --grep-findMe -- % - search in commit messages that touch current file
 " :Grep SfimdMe -- find in diff of commits
 " :Grep SfimdMe -- % find in diff of commits that touch current file
+" }}}
 
-
+" Solarized color scheme {{{
 Plugin 'altercation/vim-colors-solarized'
 "syntax enable
 set background=dark
 "colorscheme solarized
+" }}}
 
-
+" Matchit {{{
 Plugin 'matchit.zip'
+" }}}
 
-
+" Conque-term {{{
 Plugin 'rosenfeld/conque-term'
 " Type :ConqueTerm <command> for current buffer
 " ConqueTermSplit/VSplt
@@ -532,13 +548,13 @@ let g:ConqueTerm_TERM = 'vt100'
 " 	set_callback
 " 	close
 " 		all of these need a conqueterm object (read the docs)
-"
-"
+" }}}
 
-
+" Vim-dirdiff {{{
 "Plugin 'will133/vim-dirdiff'
+" }}}
 
-
+" NERDCommentor {{{
 Plugin 'scrooloose/nerdcommenter'
 " Defaults
 " [count]<leader>cc|NERDComComment| comment out the current line or selected
@@ -562,38 +578,39 @@ Plugin 'scrooloose/nerdcommenter'
 "
 " Remove the extra space when uncommenting
 let NERDRemoveExtraSpaces = 1
+" }}}
 
+" Align {{{
 Plugin 'align'
-Plugin 'AutoAlign'
+" }}}
 
+" AutoAlign (Disabled) {{{
+Plugin 'AutoAlign'
+" }}}
+
+" Emmet_vim {{{
 Plugin 'mattn/emmet-vim'
+" }}}
+
+" WebAPI-vim {{{
 Plugin 'mattn/webapi-vim'
+
 " override configuration
 let g:user_emmet_settings = {
 			\    'indentation' : '    '
 			\}
 " Set the expand key
 let g:user_emmet_leader_key = '<C-Z>'
+" }}}
 
-
+" PHP_Indenting-for-vim {{{
 Plugin '2072/PHP-Indenting-for-VIm'
 " Use indentation for switch/case statements
 :let g:PHP_vintage_case_default_indent = 1
+" }}}
 
-"Plugin 'tagbar' I use taglist
-
-
+" Syntastic {{{
 Plugin 'scrooloose/syntastic'
-"Plugin '907th/vim-auto-save'
-"" Enable auto_save on start
-"let g:auto_save = 1
-"" Do not check the update time
-"let g:auto_save_no_updatetime = 1
-
-" Initial settings to be revised after reading the manual
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_aouto_loc_list           = 1
@@ -609,43 +626,50 @@ let g:syntastic_mode_map = {
 			\ "active_filetypes": ["php", "Javascript"],
 			\ "passive_filetypes": []
 			\}
+" }}}
 
+" Vim-auto-save (disabled but try with tmux2) {{{
+"Plugin '907th/vim-auto-save'
+"" Enable auto_save on start
+"let g:auto_save = 1
+"" Do not check the update time
+"let g:auto_save_no_updatetime = 1
+" }}}
 
+" Initial settings to be revised after reading the manual {{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+" }}}
+
+" CSS_Color {{{
 Plugin 'css_color.vim'
+" }}}
+
+" IndentLine.vim {{{
 Plugin 'indentLine.vim'
 " Possible to change the color of the lines
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui  = '#A4E57E'
 " And also the character
 let g:indentLine_cha = ':'
+" }}}
 
+" File-line {{{
 Plugin 'bogado/file-line'
-Plugin 'navajo-night'
-"Plugin 'gitDiff.vim'
-Plugin 'markdown'
-Plugin 'Rename'
-" VIM-PHP_Refactoring-Toolbox conflicts with easyGrep with one of shortcuts
-" \rvl
-"Plugin 'VIM-PHP-Refactoring-Toolbox'
-"Plugin 'easyGrep'
+" }}}
 
-"Plugin 'greplace.vim'
-" Candystripe colorscheme
-Plugin 'modess/vim-phpcolors'
-"Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-surround'
-" ds<surround-to-delete> will delete  the surround
-" cs<surround-to-delete><surround-to-replace-with>
-" ys<motion><surround-to-insert>
-" yss<surround-to-insert> works on line excluding leading whitespace
-" ySS<surround-to-insert> surrounds the line and indents it
-"
-" Closing surrounds like })>] work as is but openings {(<[ insert a space to
-" the inside
-"
+" Navajo-night colour scheme {{{
+Plugin 'navajo-night'
+" }}}
+
+" Vim-JSON {{{
 Plugin 'elzr/vim-json'
 " Turn off concealement (hiding the quotation marks)
 let g:vim_json_syntax_conceal = 0
+" }}}
+
+" VIM-airline {{{
 Plugin 'bling/vim-airline'"
 "let g:airline#extensions#tabline#enabled = 1
 " use the powerline fonts
@@ -655,14 +679,18 @@ if !exists('g:airline_symbols')
   endif
   " Show the statusline all of the time oand not just when a split is showing
   set laststatus=2
+  " }}}
 
+" Vim-gitgutter {{{
 Plugin 'airblade/vim-gitgutter'
 " I don't want gitgutter to set up any key bindings as I want to handle these
 " with Fugitive
 let g:gitgutter_map_keys = 0
 " and turn off line highlighting
 let g:gitgutter_highlight_lines = 0
+" }}}
 
+" PHP-cs-fixer {{{
 Plugin 'stephpy/php-cs-fixer'
 " If php-cs-fixer is in $PATH, you don't need to define line below
 " let g:php_cs_fixer_path = "~/php-cs-fixer.phar" " define the path to the php-cs-fixer.phar
@@ -676,21 +704,28 @@ let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run op
 let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
 nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
 nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
+" }}}
 
-
-" Emmet
+" Emmet {{{
 "let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.dotfiles/emmet.json')), "\n"))
+" }}}
 
+" VIM-phpqa.git {{{
 Plugin 'joonty/vim-phpqa.git'
 " All of your Plugins must be added before the following line
+" }}}
 
+" JSHint {{{
 Bundle "wookiehangover/jshint.vim"
+" }}}
 
+" YA.js (disabled) {{{
 " This keep dropping random characters everywhere and it makes it very
 " difficule to code
 " Install some decent javascript syntax colouring
-"Plugin 'othree/yajs.vim'
+"Plugin 'othree/yajs.vim' }}}
 
+" End of Vundle stuff {{{
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -703,24 +738,30 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+" }}}
 
+" Use the candystripe colour scheme {{{
 colorscheme candystripe
+" }}}
 
-" Set a mapping up to convert the current word into uppercase
+" Set a mapping up to convert the current word into uppercase {{{
 inoremap <c-u> <esc>viWUEa
 nnoremap <c-u> viWUE
+" }}}
 
-" Map the H to the start of the line (as h is left, H is a stronger left)
+" Map the H to the start of the line (as h is left, H is a stronger left) {{{
 nnoremap H ^
 nnoremap L $
+" }}}
 
-" Map jk in insert mode instead of pressing escape
+" Map jk in insert mode instead of pressing escape {{{
 inoremap jk <esc>
 " Disables the default <esc> key in insert mode so that I have to use the
 " above
 inoremap <esc> <nop>
+" }}}
 
-" Disable the arrow keys
+" Disable the arrow keys {{{
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
@@ -733,8 +774,9 @@ vnoremap <up> <nop>
 vnoremap <down> <nop>
 vnoremap <left> <nop>
 vnoremap <right> <nop>
+" }}}
 
-
+" Easy tab switching {{{
 " If I start working with tabs these shortcuts will allow for faster
 " navigation
 noremap <C-S-]> gt
@@ -749,10 +791,9 @@ noremap <C-7> 7gt
 noremap <C-8> 8gt
 noremap <C-9> 9gt
 noremap <C-0> :tablast<CR>
+" }}}
 
-
-"""""""""""""""""""""""""""""""""""""""""""""
-" Strip trailing spaces from the end of lines
+" Strip trailing spaces from the end of lines {{{
 "
 " This is used in php, js, md & py files
 """""""""""""""""""""""""""""""""""""""""""""
@@ -780,8 +821,9 @@ augroup filetype_yaml
         autocmd FileType yaml nnoremap <buffer> set shiftwidth=2
     endif
 augroup END
+" }}}
 
-" Set up a bunch of filetype specific abbreviations
+" PHP specific auto commands {{{
 augroup filetype_php
     if has("autocmd")
         autocmd!
@@ -803,8 +845,9 @@ augroup filetype_php
     endif
 
 augroup END
+" }}}
 
-" Javascript abbreviations
+" Javascript specific auto commands {{{
 augroup filetype_js
     if has("autocmd")
         autocmd!
@@ -817,9 +860,9 @@ augroup filetype_js
         autocmd FileType js :iabbrev <buffer> rn return
     endif
 augroup END
+" }}}
 
-
-" Markdown auto commands
+" Markdown specific auto commands {{{
 augroup filetype_markdown
     if has("autocmd")
         autocmd!
@@ -833,8 +876,16 @@ augroup filetype_markdown
         autocmd FileType markdown <buffer> :onoremap  ah :<c-u>execute "normal! ?^[-=\\{2,}]\\+$\r:nohlsearch\rg_vk0"<cr>
     endif
 augroup END
+" }}}
 
+" Show and hide search results {{{
 " in all buffers use <leader>sh to hide the latest search results
 nnoremap <leader>sh :set nohlsearch<cr>
 " and <leader>ss to show the search results
 nnoremap <leader>ss :set hlsearch<cr>
+" }}}
+
+" Toggle word wrap {{{
+" Create mapping for <leader>ww = word wrap
+nnoremap <leader>ww :set wrap!<cr>
+" }}}
