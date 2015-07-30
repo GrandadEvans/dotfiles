@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/skype
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_GB]=Skype
+Name=Skype
+Comment[en_GB]=Skype
+Comment=Skype
+X-GNOME-Autostart-Delay=0

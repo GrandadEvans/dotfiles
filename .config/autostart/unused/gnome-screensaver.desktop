@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec="gnome-screensaver
+Hidden=false
+X-GNOME-Autostart-enable=true
+Name="gnome-screensaver"
+Comment="Gnome Screensaver in charge of the lock screen"

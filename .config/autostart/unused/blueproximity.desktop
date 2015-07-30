@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=blueproximity
+Hidden=false
+X-GNOME-Autostart-enable=true
+Name="BlueProximity"
+Comment="Proximity detector for bluetooth devices"

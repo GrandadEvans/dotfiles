@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/supervisord
+Hidden=false
+X-GNOME-Autostart-enable=true
+Name="Supervisord"
+Comment="Supervisord process manager"

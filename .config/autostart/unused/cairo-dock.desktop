@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/cairo-dock
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_GB]=Cairo Dock
+Name=Cairo Dock
+Comment[en_GB]=Cairo Dock
+Comment=Cairo Dock
+X-GNOME-Autostart-Delay=0
