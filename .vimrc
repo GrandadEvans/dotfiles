@@ -676,8 +676,8 @@ let g:indentLine_cha = ':'
 Plugin 'bogado/file-line'
 " }}}
 
-" Navajo-night colour scheme {{{
-Plugin 'navajo-night'
+" Navajo-night colour scheme (Disabled) {{{
+"Plugin 'navajo-night'
 " }}}
 
 " Vim-JSON {{{
