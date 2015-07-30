@@ -602,11 +602,7 @@ let NERDRemoveExtraSpaces = 1
 " }}}
 
 " Align {{{
-Plugin 'align'
-" }}}
-
-" AutoAlign (Disabled) {{{
-Plugin 'AutoAlign'
+"Plugin 'align'
 " }}}
 
 " Emmet_vim {{{
