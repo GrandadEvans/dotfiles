@@ -507,16 +507,19 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 " }}}
 
 " Solarized color scheme {{{
-Plugin 'altercation/vim-colors-solarized'
-syntax enable
+"Plugin 'altercation/vim-colors-solarized'
+"syntax enable
 "if has('gui_running')
     "set background=light
 "else
-    set background=dark
+    "set background=dark
 "endif
-let g:solarized_termcolors=256
-colorscheme solarized
+"let g:solarized_termcolors=256
+"colorscheme solarized
 " }}}
+"
+Plugin 'atweiden/vim-colors-behelit'
+colorscheme behelit
 
 " Matchit {{{
 Plugin 'matchit.zip'
