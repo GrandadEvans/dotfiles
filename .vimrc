@@ -186,22 +186,6 @@ nnoremap <silent> <leader>ev :split $MYVIMRC<CR>
 nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
 " }}}
 
-" ******************** Searches ******************** {{{
-
-    " Show and hide search results {{{
-        " in all buffers use <leader>sh to hide the latest search results
-        nnoremap <leader>sh :set nohlsearch<cr>
-        " and <leader>ss to show the search results
-        nnoremap <leader>ss :set hlsearch<cr>
-    " }}}
-
-    " Enable search highlighting {{{
-        set hlsearch
-    " }}}
-
-    " Search around line breaks {{{
-        set wrapscan
-    " }}}
 " Custom searches {{{
 " Search the current file for what's currently in the search register and display matches
 nnoremap <silent> <leader>gs :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
@@ -602,7 +586,7 @@ let NERDRemoveExtraSpaces = 1
 " }}}
 
 " Align {{{
-"Plugin 'align'
+Plugin 'align'
 " }}}
 
 " Emmet_vim {{{
@@ -677,7 +661,7 @@ Plugin 'bogado/file-line'
 " }}}
 
 " Navajo-night colour scheme {{{
-"Plugin 'navajo-night'
+Plugin 'navajo-night'
 " }}}
 
 " Vim-JSON {{{
@@ -742,6 +726,9 @@ Bundle "wookiehangover/jshint.vim"
 " Install some decent javascript syntax colouring
 "Plugin 'othree/yajs.vim' }}}
 
+" Tabularize {{{
+Plugin 'godlygeek/tabular'
+
 " End of Vundle stuff {{{
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -755,10 +742,6 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-" }}}
-
-" Use the candystripe colour scheme {{{
-colorscheme candystripe
 " }}}
 
 " Set a mapping up to convert the current word into uppercase {{{
@@ -859,6 +842,8 @@ augroup filetype_php
         autocmd FileType php :iabbrev <buffer> return No! Use "rn" abbreviation moron!
         autocmd FileType php :iabbrev <buffer> ns namespace
         autocmd FileType php :iabbrev <buffer> rn return
+
+        "autocmd FileType php :inoremap <silent> \: \:
     endif
 
 augroup END
@@ -875,16 +860,6 @@ augroup filetype_js
         autocmd FileType js :iabbrev <buffer> fn function
         autocmd FileType js :iabbrev <buffer> return No! No! No!
         autocmd FileType js :iabbrev <buffer> rn return
-    endif
-augroup END
-" }}}
-
-" Vim specific auto commands {{{
-augroup filetype_vim
-    if has("autocmd")
-        autocmd!
-
-        autocmd FileType vim :set foldmethod=marker
     endif
 augroup END
 " }}}
