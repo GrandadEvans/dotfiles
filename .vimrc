@@ -27,10 +27,6 @@ highlight SpecialKey guifg=#4a4a59
 set autoindent
 " }}}
 
-" Search around line breaks {{{
-set wrapscan
-" }}}
-
 " Set ignorecase {{{
 set ignorecase
 " }}}
@@ -53,10 +49,6 @@ set cpoptions=cesB$
 
 " Keep a bit more history {{{
 set history=1000
-" }}}
-
-" Enable search highlighting {{{
-set hlsearch
 " }}}
 
 " Read a file that has changed on disk {{{
@@ -186,15 +178,31 @@ nnoremap <silent> <leader>ev :split $MYVIMRC<CR>
 nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
 " }}}
 
-" Custom searches {{{
-" Search the current file for what's currently in the search register and display matches
-nnoremap <silent> <leader>gs :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+" ******************** Searches ******************** {{{
 
-" Search the current file for the word under the cursor and display matches
-nnoremap <silent> <leader>gw :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+    " Show and hide search results {{{
+        " in all buffers use <leader>sh to hide the latest search results
+        nnoremap <leader>sh :set nohlsearch<cr>
+        " and <leader>ss to show the search results
+        nnoremap <leader>ss :set hlsearch<cr>
+    " }}}
 
-" Search the current file for the WORD under the cursor and display matches
-nnoremap <silent> <leader>gW :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+    " Enable search highlighting {{{
+        set hlsearch
+    " }}}
+
+    " Search around line breaks {{{
+        set wrapscan
+    " }}}
+
+    " Search the current file for what's currently in the search register and display matches
+    nnoremap <silent> <leader>gs :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+
+    " Search the current file for the word under the cursor and display matches
+    nnoremap <silent> <leader>gw :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+
+    " Search the current file for the WORD under the cursor and display matches
+    nnoremap <silent> <leader>gW :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
 " End of custom searches }}}
 
 " Automatically save the states of the buffers on exit and load them on entry {{{
@@ -586,7 +594,7 @@ let NERDRemoveExtraSpaces = 1
 " }}}
 
 " Align {{{
-Plugin 'align'
+"Plugin 'align'
 " }}}
 
 " Emmet_vim {{{
@@ -727,22 +735,24 @@ Bundle "wookiehangover/jshint.vim"
 "Plugin 'othree/yajs.vim' }}}
 
 " Tabularize {{{
-Plugin 'godlygeek/tabular'
+
+    Plugin 'godlygeek/tabular'
+" }}}
 
 " End of Vundle stuff {{{
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-" }}}
+    call vundle#end()            " required
+    filetype plugin indent on    " required
+    " To ignore plugin indent changes, instead use:
+    "filetype plugin on
+    "
+    " Brief help
+    " :PluginList       - lists configured plugins
+    " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+    " :PluginSearch foo - searches for foo; append `!` to refresh local cache
+    " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+    " see :h vundle for more details or wiki for FAQ
+    " Put your non-Plugin stuff after this line
+    " }}}
 
 " Set a mapping up to convert the current word into uppercase {{{
 inoremap <c-u> <esc>viWUEa
@@ -864,6 +874,16 @@ augroup filetype_js
 augroup END
 " }}}
 
+" Vim specific auto commands {{{
+augroup filetype_vim
+    if has("autocmd")
+        autocmd!
+
+        autocmd FileType vim :set foldmethod=marker
+    endif
+augroup END
+" }}}
+
 " Markdown specific auto commands {{{
 augroup filetype_markdown
     if has("autocmd")
@@ -878,13 +898,6 @@ augroup filetype_markdown
         autocmd FileType markdown <buffer> :onoremap  ah :<c-u>execute "normal! ?^[-=\\{2,}]\\+$\r:nohlsearch\rg_vk0"<cr>
     endif
 augroup END
-" }}}
-
-" Show and hide search results {{{
-" in all buffers use <leader>sh to hide the latest search results
-nnoremap <leader>sh :set nohlsearch<cr>
-" and <leader>ss to show the search results
-nnoremap <leader>ss :set hlsearch<cr>
 " }}}
 
 " Toggle word wrap {{{
