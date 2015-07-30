@@ -186,6 +186,22 @@ nnoremap <silent> <leader>ev :split $MYVIMRC<CR>
 nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
 " }}}
 
+" ******************** Searches ******************** {{{
+
+    " Show and hide search results {{{
+        " in all buffers use <leader>sh to hide the latest search results
+        nnoremap <leader>sh :set nohlsearch<cr>
+        " and <leader>ss to show the search results
+        nnoremap <leader>ss :set hlsearch<cr>
+    " }}}
+
+    " Enable search highlighting {{{
+        set hlsearch
+    " }}}
+
+    " Search around line breaks {{{
+        set wrapscan
+    " }}}
 " Custom searches {{{
 " Search the current file for what's currently in the search register and display matches
 nnoremap <silent> <leader>gs :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
