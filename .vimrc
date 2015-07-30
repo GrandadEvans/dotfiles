@@ -676,7 +676,7 @@ let g:indentLine_cha = ':'
 Plugin 'bogado/file-line'
 " }}}
 
-" Navajo-night colour scheme (Disabled) {{{
+" Navajo-night colour scheme {{{
 "Plugin 'navajo-night'
 " }}}
 
@@ -875,6 +875,16 @@ augroup filetype_js
         autocmd FileType js :iabbrev <buffer> fn function
         autocmd FileType js :iabbrev <buffer> return No! No! No!
         autocmd FileType js :iabbrev <buffer> rn return
+    endif
+augroup END
+" }}}
+
+" Vim specific auto commands {{{
+augroup filetype_vim
+    if has("autocmd")
+        autocmd!
+
+        autocmd FileType vim :set foldmethod=marker
     endif
 augroup END
 " }}}
