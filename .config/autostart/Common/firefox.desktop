@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/firefox
+Hidden=false
+X-GNOME-Autostart-enable=true
+Name="Firefox"
+Comment="Firefox web browser"
