@@ -24,6 +24,15 @@ windows:
         - Term:
           - cd /home/john/chef-solo
           - clear
+  - BIH:
+      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
+      panes:
+        - Term:
+          - cd /home/john/projects/BIH
+          - clear
+        - Vim:
+          - cd /home/john/projects/BIH
+          - vim
   - SPDC:
       layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
       panes:
