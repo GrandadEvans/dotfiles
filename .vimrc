@@ -767,6 +767,10 @@ Plugin 'kshenoy/vim-signature'
     colorscheme sunburst
 " }}}
 
+" PHPUnit-QF {{{1
+Bundle 'joonty/vim-phpunitqf.git'
+
+
 " End of Vundle stuff {{{
     call vundle#end()            " required
     filetype plugin indent on    " required
@@ -866,7 +870,16 @@ augroup filetype_php
     if has("autocmd")
         autocmd!
 
+        " Before a file is written strip any traililng whitespace
         autocmd BufWritePre *.php :call <SID>StripTrailingWhitespaces()
+
+        " When a file is written I want to run the unit tests for this file if
+        " it is a test file. If not I want to run tests for the whole project.
+        "
+        " This will sooner or later be linked to a list of files that will
+        " contain test files that effect the current file
+        " Then on save the respective test file(s) will be run
+        "autocmd BufWritePre *.php :call  Test %
 
         autocmd FileType php :iabbrev <buffer> fn function<cr>{<cr>XContent<cr>}jkk0C
         autocmd FileType php :iabbrev <buffer> pubf public function<cr>{<cr>XContent<cr>}jkk0C
