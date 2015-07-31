@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec=quiterss
+Hidden=false
+X-GNOME-Autostart-enable=true
+Name="QuiteRSS"
+Comment="Quite RSS Reader"

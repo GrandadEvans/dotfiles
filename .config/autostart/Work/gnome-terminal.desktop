@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Exec="gnome-terminal --command=\"mux start Work\""
+Hidden=false
+X-GNOME-Autostart-enable=true
+Name="Terminal"
+Comment="Gnome Terminal running tmuxinator"
