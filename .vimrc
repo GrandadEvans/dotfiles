@@ -275,7 +275,7 @@ let Tlist_Auto_Open = 0
     let Tlist_Use_Right_Window=1
 
     " Map <leader>tt to the toggle taglist function
-    "nnoremap <silent> <leader>tt :TlistToggle<CR>
+    nnoremap <silent> <leader>tt :TlistToggle<CR>
 
     " map <leader>to to the tags open function
     nnoremap <silent> <leader>to :TlistOpen<CR>
@@ -334,42 +334,42 @@ let NERDTreeShowHidden=1
 """""""""""""""""""""""
 " SnipMate
 """""""""""""""""""""""
-Plugin 'snipMate'
-let g:snips_author = "John Evans"
+"Plugin 'snipMate'
+"let g:snips_author = "John Evans"
 
-" map :c-all to copy all
-noremap <Leader>c-all :%y<CR>
+"" map :c-all to copy all
+"noremap <Leader>c-all :%y<CR>
 
-" map :hll to highlight long line
-nnoremap <Leader>hll :call<SID>LongLineHLToggle()<CR>
+"" map :hll to highlight long line
+"nnoremap <Leader>hll :call<SID>LongLineHLToggle()<CR>
 
-hi OverLength ctermbg=none cterm=none
-match OverLength /\%>800v/
-fun! s:LongLineHLToggle()
-    if !exists('w:longlinehl')
-        let w:longlinehl = matchadd('ErrorMsg', '.\%>80v', 0)
-        echo "Long lines highlighted"
-    else
-        call matchdelete(w:longlinehl)
-        unl w:longlinehl
-        echo "Long lines unhighlighted"
-    endif
-endfunction
+"hi OverLength ctermbg=none cterm=none
+"match OverLength /\%>800v/
+"fun! s:LongLineHLToggle()
+"    if !exists('w:longlinehl')
+"        let w:longlinehl = matchadd('ErrorMsg', '.\%>80v', 0)
+"        echo "Long lines highlighted"
+"    else
+"        call matchdelete(w:longlinehl)
+"        unl w:longlinehl
+"        echo "Long lines unhighlighted"
+"    endif
+"endfunction
 
-" Show the tabline if there are 2 or more tabs
-"set showtabline=2
+"" Show the tabline if there are 2 or more tabs
+""set showtabline=2
 
-" Press Enter to insert a new line below the cursor
-" Press Shift Enter to insert a new line before the current line
-" Both commands do not take you into INSERT mode
-noremap <S-Enter> O<Esc>
-noremap <CR> o<Esc>
+"" Press Enter to insert a new line below the cursor
+"" Press Shift Enter to insert a new line before the current line
+"" Both commands do not take you into INSERT mode
+"noremap <S-Enter> O<Esc>
+"noremap <CR> o<Esc>
 
 
-" Highlight whitespace at the end of a line in blue
-" http://vimbits.com/bits/259
-highlight WhitespaceEOL ctermbg=Blue guibg=Blue
-match WhitespaceEOL /\s\+$/
+"" Highlight whitespace at the end of a line in blue
+"" http://vimbits.com/bits/259
+"highlight WhitespaceEOL ctermbg=Blue guibg=Blue
+"match WhitespaceEOL /\s\+$/
 
 
 """""""""""""""""""""""
