@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/john/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 ZSH_THEME="aussiegeek"
@@ -46,7 +46,7 @@ plugins=(colored-man composer cp history)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/home/john/bin:/usr/local/sbin:/usr/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:$HOME/bin:/usr/local/sbin:/usr/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -84,7 +84,7 @@ export EDITOR='vim'
 export VAGRANT_DEFAULT_PROVIDER="virtualbox"
 
 # Add my home composer install to the path
-PATH=$PATH:/home/john/.composer/vendor/bin
+PATH=$PATH:$HOME/.composer/vendor/bin
 
 # Source other files
 source ~/.aliases

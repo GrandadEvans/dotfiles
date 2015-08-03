@@ -4,8 +4,8 @@ alias pip="pip3.4"
 alias xampp="sudo  /opt/lampp/manager-linux-x64.run"
 
 # Projects
-alias cd-mpc="cd /home/john/www/projects/MPC/MPCv4"
-alias phps8="/home/john/Downloaded_but_in_use/PhpStorm-139.1348-v8-stable/bin/phpstorm.sh $1"
+alias cd-mpc="cd $HOME/www/projects/MPC/MPCv4"
+alias phps8="$HOME/Downloaded_but_in_use/PhpStorm-139.1348-v8-stable/bin/phpstorm.sh $1"
 alias monitors="cd ~/monitors && la"
 alias pretify-json="python -mjson.tool"
 

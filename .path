@@ -1,11 +1,18 @@
-PATH=$PATH:/home/john/.gem/ruby/2.0.0/bin
-PATH=$PATH:/home/john/.local/share/bin
+PATH=$PATH:/usr/local/lib/node_modules/npm/bin
+PATH=$PATH:/opt/local/sbin
+PATH=$PATH:$HOME/perl5/bin
+PATH=$PATH:$HOME/.rvm/bin
+PATH=$PATH:$HOME/.gem/ruby/2.0.0/bin
+PATH=$PATH:$HOME/.local/share/bin
+PATH=$PATH:$DOTFILES_DIR/npm/bin
+PATH=$PATH:$DOTFILES_DIR/node_modules/.bin
+PATH=$PATH:$DOTFILES_DIR/gem/bin
 
 PATH=$PATH:/usr/bin
 PATH=$PATH:/usr/local/bin
 PATH=$PATH:/usr/sbin
 PATH=$PATH:/sbin
-PATH=$PATH:/home/john/.npm
+PATH=$PATH:$HOME/npm/bin
 PATH=$PATH:/bin
-PATH=$PATH:/home/john/dotfiles/.composer/vendor/bin
+PATH=$PATH:$DOTFILES_DIR/.composer/vendor/bin
 export PATH

@@ -68,7 +68,7 @@ function makeLink() {
 }
 
 function makeLinks() {
-    DOTFILES="$HOME/dotfiles"
+    DOTFILES="$DOTFILES_DIR"
 
     makeLink "$DOTFILES/.bashrc"        "$HOME"
     makeLink "$DOTFILES/.bash_profile"  "$HOME"

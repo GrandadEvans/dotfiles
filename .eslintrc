@@ -1,0 +1,13 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "mocha": true
+    },
+    "plugins": [
+        "react",
+        "grunt",
+        "mocha",
+        "requirejs"
+    ]
+}

@@ -3,219 +3,219 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " Configure spaces not tabss {{{2
-    " When the tab key is pressed then insert spaces
-    set expandtab
-    " how many spaces to insert?
-    set tabstop=4
-    " How many spaces to indent by?
-    set shiftwidth=4
-    " And always set the indent to a multiple of shiftwidth
-    set shiftround
-    " Backspace over tabs as if they were tabs and not 4 separate backspaces
-    set softtabstop=4
+" When the tab key is pressed then insert spaces
+set expandtab
+" how many spaces to insert?
+set tabstop=4
+" How many spaces to indent by?
+set shiftwidth=4
+" And always set the indent to a multiple of shiftwidth
+set shiftround
+" Backspace over tabs as if they were tabs and not 4 separate backspaces
+set softtabstop=4
 
 " Set the editor to show tab and EOL characters {{{2
-    set listchars=tab:▸-,eol:¬
-    "Invisible character colors
-    highlight NonText guifg=#4a4a59
-    highlight SpecialKey guifg=#4a4a59
-    " Finally turn the character listings on
-    set list
+set listchars=tab:▸-,eol:¬
+"Invisible character colors
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
+" Finally turn the character listings on
+set list
 
 " Copy the indent from the above line {{{2
-    set autoindent
+set autoindent
 
 " Set ignorecase {{{2
-    set ignorecase
+set ignorecase
 
 " Make the command line 2 lines high {{{2
-    set ch=2
+set ch=2
 
 " Allow backspacing over indents, eol and start of an insert {{{2
-    set backspace=2
+set backspace=2
 
 " Make sure unsaved buffers are allowed to be hidden without being saved {{{2
-    set hidden
+set hidden
 
 " Make the change <motion> actions put a $ at the end instead of just deleting {{{2
-    set cpoptions=cesB$
+set cpoptions=cesB$
 
 " Keep a bit more history {{{2
-    set history=1000
+set history=1000
 
 " Read a file that has changed on disk {{{2
-    set autoread
+set autoread
 
 " Turn the line numbers on {{{2
-    set nu
-    set relativenumber
+set nu
+set relativenumber
 
 " Set the leader up to be the comma {{{2
-    let mapleader=","
+let mapleader=","
 
 " Don't syntax highlight lines that are too long {{{2
-    set synmaxcol=1024
+set synmaxcol=1024
 
 " Set up backups {{{2
-    if has('persistent_undo')
-        set undofile
-        set undolevels=1000
-        set undoreload=10000
-    endif
+if has('persistent_undo')
+    set undofile
+    set undolevels=1000
+    set undoreload=10000
+endif
 
 " Show matching brackets {{{2
-    set showmatch
+set showmatch
 
 " For times when you forget to set sudo {{{2
-    cmap w!! W !sudo tee % >/dev/null
+cmap w!! W !sudo tee % >/dev/null
 
 " Create specific directories for backups & swaps etc {{{2
-    function! InitializeDirectories()
-        let separator = "."
-        let parent = $HOME
-        let prefix = '.vim'
-        let dir_list = {
-                    \ 'backup': 'backupdir',
-                    \ 'views': 'viewdir',
-                    \ 'swap': 'directory' }
+function! InitializeDirectories()
+    let separator = "."
+    let parent = $HOME
+    let prefix = '.vim'
+    let dir_list = {
+                \ 'backup': 'backupdir',
+                \ 'views': 'viewdir',
+                \ 'swap': 'directory' }
 
-        if has('persistent_undo')
-            let dir_list['undo'] = 'undodir'
-        endif
+    if has('persistent_undo')
+        let dir_list['undo'] = 'undodir'
+    endif
 
-        for [dirname, settingname] in items(dir_list)
-            let directory = parent . '/' . prefix . dirname . "/"
-            if exists("*mkdir")
-                if !isdirectory(directory)
-                    call mkdir(directory)
-                endif
-            endif
+    for [dirname, settingname] in items(dir_list)
+        let directory = parent . '/' . prefix . dirname . "/"
+        if exists("*mkdir")
             if !isdirectory(directory)
-                echo "Warning: Unable to create backup directory: " . directory
-                echo "Try: mkdir -p " . directory
-            else
-                let directory = substitute(directory, " ", "\\\\ ", "g")
-                exec "set " . settingname . "=" . directory
+                call mkdir(directory)
             endif
-        endfor
-    endfunction
-    call InitializeDirectories()
+        endif
+        if !isdirectory(directory)
+            echo "Warning: Unable to create backup directory: " . directory
+            echo "Try: mkdir -p " . directory
+        else
+            let directory = substitute(directory, " ", "\\\\ ", "g")
+            exec "set " . settingname . "=" . directory
+        endif
+    endfor
+endfunction
+call InitializeDirectories()
 
 " Fix constant spelling mistakes {{{2
-    iabbrev Acheive    Achieve
-    iabbrev acheive    achieve
-    iabbrev Alos       Also
-    iabbrev alos       also
-    iabbrev Aslo       Also
-    iabbrev aslo       also
-    iabbrev Becuase    Because
-    iabbrev becuase    because
-    iabbrev Bianries   Binaries
-    iabbrev bianries   binaries
-    iabbrev Bianry     Binary
-    iabbrev bianry     binary
-    iabbrev Charcter   Character
-    iabbrev charcter   character
-    iabbrev Charcters  Characters
-    iabbrev charcters  characters
-    iabbrev Exmaple    Example
-    iabbrev exmaple    example
-    iabbrev Exmaples   Examples
-    iabbrev exmaples   examples
-    iabbrev Fone       Phone
-    iabbrev fone       phone
-    iabbrev Lifecycle  Life-cycle
-    iabbrev lifecycle  life-cycle
-    iabbrev Lifecycles Life-cycles
-    iabbrev lifecycles life-cycles
-    iabbrev Seperate   Separate
-    iabbrev seperate   separate
-    iabbrev Seureth    Suereth
-    iabbrev seureth    suereth
-    iabbrev Shoudl     Should
-    iabbrev shoudl     should
-    iabbrev Taht       That
-    iabbrev taht       that
-    iabbrev Teh        The
-    iabbrev teh        the
+iabbrev Acheive    Achieve
+iabbrev acheive    achieve
+iabbrev Alos       Also
+iabbrev alos       also
+iabbrev Aslo       Also
+iabbrev aslo       also
+iabbrev Becuase    Because
+iabbrev becuase    because
+iabbrev Bianries   Binaries
+iabbrev bianries   binaries
+iabbrev Bianry     Binary
+iabbrev bianry     binary
+iabbrev Charcter   Character
+iabbrev charcter   character
+iabbrev Charcters  Characters
+iabbrev charcters  characters
+iabbrev Exmaple    Example
+iabbrev exmaple    example
+iabbrev Exmaples   Examples
+iabbrev exmaples   examples
+iabbrev Fone       Phone
+iabbrev fone       phone
+iabbrev Lifecycle  Life-cycle
+iabbrev lifecycle  life-cycle
+iabbrev Lifecycles Life-cycles
+iabbrev lifecycles life-cycles
+iabbrev Seperate   Separate
+iabbrev seperate   separate
+iabbrev Seureth    Suereth
+iabbrev seureth    suereth
+iabbrev Shoudl     Should
+iabbrev shoudl     should
+iabbrev Taht       That
+iabbrev taht       that
+iabbrev Teh        The
+iabbrev teh        the
 
 " Map the save and new tab keys {{{2
-    noremap <C-s> <esc>:w<CR>
-    inoremap <C-s> <esc>:w<CR>
-    noremap <C-t> <esc>:tabnew<CR>
+noremap <C-s> <esc>:w<CR>
+inoremap <C-s> <esc>:w<CR>
+noremap <C-t> <esc>:tabnew<CR>
 
 " Bind the :W to :w (typo) {{{2
-    command! W w
+command! W w
 
 " Bind the Wall and Qall to the proper functions {{{2
-    command! Qall qall
-    command! Wall wall
+command! Qall qall
+command! Wall wall
 
 " Edit and source ~/.vimrc {{{2
-    nnoremap <silent> <leader>ev :split $MYVIMRC<CR>
-    nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
+nnoremap <silent> <leader>ev :split $MYVIMRC<CR>
+nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
 
 " ******************** Searches ******************** {{{2
 
-    " Show and hide search results {{{2
-        " in all buffers use <leader>sh to hide the latest search results
-        nnoremap <leader>sh :set nohlsearch<cr>
-        " and <leader>ss to show the search results
-        nnoremap <leader>ss :set hlsearch<cr>
-    " Enable search highlighting {{{3
-        set hlsearch
-    " Search around line breaks {{{3
-        set wrapscan
-    " Search the current file for what's currently in the search register and display matches
-    nnoremap <silent> <leader>gs :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+" Show and hide search results {{{2
+" in all buffers use <leader>sh to hide the latest search results
+nnoremap <leader>sh :set nohlsearch<cr>
+" and <leader>ss to show the search results
+nnoremap <leader>ss :set hlsearch<cr>
+" Enable search highlighting {{{3
+set hlsearch
+" Search around line breaks {{{3
+set wrapscan
+" Search the current file for what's currently in the search register and display matches
+nnoremap <silent> <leader>gs :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
 
-    " Search the current file for the word under the cursor and display matches
-    nnoremap <silent> <leader>gw :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+" Search the current file for the word under the cursor and display matches
+nnoremap <silent> <leader>gw :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
 
-    " Search the current file for the WORD under the cursor and display matches
-    nnoremap <silent> <leader>gW :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+" Search the current file for the WORD under the cursor and display matches
+nnoremap <silent> <leader>gW :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
 
 " Automatically save the states of the buffers on exit and load them on entry {{{2
-    au BufWinLeave * silent! mkview
-    au BufWinEnter * silent! loadview
+au BufWinLeave * silent! mkview
+au BufWinEnter * silent! loadview
 
 " Set GUI Options {{{2
-    set guioptions-=m  "remove menu bar
-    set guioptions-=T  "remove toolbar
-    set guioptions-=r  "remove right-hand scroll bar
-    set guioptions-=L  "remove left-hand scroll bar
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
 
 " Return to last edit position when opening files (You want this!) {{{2
-    if has("autocmd")
-        augroup last_position
-            autocmd!
-            autocmd BufReadPost *
-                        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                        \   exe "normal! g`\"" |
-                        \ endif
-        augroup END
-    endif
+if has("autocmd")
+    augroup last_position
+        autocmd!
+        autocmd BufReadPost *
+                    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+                    \   exe "normal! g`\"" |
+                    \ endif
+    augroup END
+endif
 
 " Remember info about open buffers on close {{{2
-    set viminfo^=%
+set viminfo^=%
 
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac {{{2
-    nnoremap <M-k> mz:m-2<cr>`z
-    nnoremap <M-j> mz:m+<cr>`z
-    vnoremap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-    vnoremap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nnoremap <M-k> mz:m-2<cr>`z
+nnoremap <M-j> mz:m+<cr>`z
+vnoremap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vnoremap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Set the font {{{2
-    if has('gui_running')
-        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
-    endif
+if has('gui_running')
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
+endif
 
 " Initialise Vundle {{{2
-    " set the runtime path to include Vundle and initialize
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
-    " alternatively, pass a path where Vundle should install plugins
-    "call vundle#begin('~/some/path/here')
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
 " PLUGINS {{{1
 " Vundle {{{2
@@ -223,103 +223,103 @@ Plugin 'gmarik/Vundle.vim'
 
 " Taglist {{{2
 Plugin 'taglist.vim'
-    " Plugin details {{{
-    " Set the toggle key
-    nnoremap <silent> <F8> :TlistToggle<CR>
-    " Open the taglist on vim start-up
-    let Tlist_Auto_Open = 0
-    " Press o to open in new window
-    " Press p to open the definition and stay in the taglist
-    " Open a fold +
-    " Close a fold -
-    " Open all folds *
-    " Clo all folds =
-    " use the taglist on the right
+" Plugin details {{{
+" Set the toggle key
+nnoremap <silent> <F8> :TlistToggle<CR>
+" Open the taglist on vim start-up
+let Tlist_Auto_Open = 0
+" Press o to open in new window
+" Press p to open the definition and stay in the taglist
+" Open a fold +
+" Close a fold -
+" Open all folds *
+" Clo all folds =
+" use the taglist on the right
 
-    " Automatically update the taglist to include newly opened files
-    let Tlist_Auto_Update=1
+" Automatically update the taglist to include newly opened files
+let Tlist_Auto_Update=1
 
-    " Shows tag scope next to tag name
-    let Tlist_Enable_Tag_Scope=1
+" Shows tag scope next to tag name
+let Tlist_Enable_Tag_Scope=1
 
-    " DO NOT: Show the fold indicator column in the taglist window
-    let Tlist_Enable_Fold_Column=0
+" DO NOT: Show the fold indicator column in the taglist window
+let Tlist_Enable_Fold_Column=0
 
-    " Close tag folds for inactive buffers
-    let Tlist_File_Fold_Auto_Close=1
+" Close tag folds for inactive buffers
+let Tlist_File_Fold_Auto_Close=1
 
-    " Jump to taglist window on open
-    let Tlist_GainFocus_On_ToggleOpen=1
+" Jump to taglist window on open
+let Tlist_GainFocus_On_ToggleOpen=1
 
-    " On entering a buffer, automatically highlight the current tag
-    let Tlist_Highlight_Tag_On_BufEnter=1
+" On entering a buffer, automatically highlight the current tag
+let Tlist_Highlight_Tag_On_BufEnter=1
 
-    " Process files even when the taglist is closed
-    let Tlist_Process_File_Always=1
+" Process files even when the taglist is closed
+let Tlist_Process_File_Always=1
 
-    " Place the taglist window on the right side
-    let Tlist_Use_Right_Window=1
+" Place the taglist window on the right side
+let Tlist_Use_Right_Window=1
 
-    " Map <leader>tt to the toggle taglist function
-    nnoremap <silent> <leader>tt :TlistToggle<CR>
+" Map <leader>tt to the toggle taglist function
+nnoremap <silent> <leader>tt :TlistToggle<CR>
 
-    " map <leader>to to the tags open function
-    nnoremap <silent> <leader>to :TlistOpen<CR>
+" map <leader>to to the tags open function
+nnoremap <silent> <leader>to :TlistOpen<CR>
 
-    " map <leader>tc to the tags close function
-    nnoremap <silent> <leader>tc :TlistClose<CR>
+" map <leader>tc to the tags close function
+nnoremap <silent> <leader>tc :TlistClose<CR>
 
-    " Automatically highlight the current tag in the taglist
-    let Tlist_Auto_Highlight_Tag=1
-    " End of tlist details }}}
+" Automatically highlight the current tag in the taglist
+let Tlist_Auto_Highlight_Tag=1
+" End of tlist details }}}
 
 " NERDTree {{{2
 Plugin 'scrooloose/nerdtree'
-    " Plugin details {{{
-    "Map the usual nerdtree key to the toggle
-    nnoremap <silent> <F3> :NERDTreeToggle<CR>
-    " Close nerdtree if its the only window left?
-    "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-    "NERDTreeFind Fins the current file in nerdtree
-    "NERDTreeCWD Sets Nerdtree root to be the current directory
-    "Bookmark <name> Bookmark as name
-    "Keymap:
-    "o open
-    "go open, but stay in nerdtree
-    "t open in new tab
-    "i open in split window
-    "gi open in new window but stay in nerdtree
-    "s open in new v-split
-    "gs open in new v-split but stay in nerdtree
-    "O recursively open selected dir
-    "x close current nodes parent
-    "X recursivly close all children of current node
-    "D delete cuurent bookmark
-    "P jump to root node
-    "p jump to current node's parent
-    "C change tree root to selected dir
-    "u move tree root up one dir
-    "U as above but old root is left open
-    "r recursively refresh current dir
-    "R recursively refresh root dir
-    "m display nerd tree menu
-    "cd change the CWD to the dir of selected root
-    "CD change tree root to CWD
-    "I toggle hidden files
-    "f toggle whether file filters are used
-    "F toggle whether files are displayed
-    "B toggle whether bookmarks table is shown
-    "A zoom (minimize/maximize)M nerdtree window
-    let NERDTreeQuitOnOpen=0
-    let NERDTreeShowHidden=1
-    " end of plugin details }}}
+" Plugin details {{{
+"Map the usual nerdtree key to the toggle
+nnoremap <silent> <F3> :NERDTreeToggle<CR>
+" Close nerdtree if its the only window left?
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"NERDTreeFind Fins the current file in nerdtree
+"NERDTreeCWD Sets Nerdtree root to be the current directory
+"Bookmark <name> Bookmark as name
+"Keymap:
+"o open
+"go open, but stay in nerdtree
+"t open in new tab
+"i open in split window
+"gi open in new window but stay in nerdtree
+"s open in new v-split
+"gs open in new v-split but stay in nerdtree
+"O recursively open selected dir
+"x close current nodes parent
+"X recursivly close all children of current node
+"D delete cuurent bookmark
+"P jump to root node
+"p jump to current node's parent
+"C change tree root to selected dir
+"u move tree root up one dir
+"U as above but old root is left open
+"r recursively refresh current dir
+"R recursively refresh root dir
+"m display nerd tree menu
+"cd change the CWD to the dir of selected root
+"CD change tree root to CWD
+"I toggle hidden files
+"f toggle whether file filters are used
+"F toggle whether files are displayed
+"B toggle whether bookmarks table is shown
+"A zoom (minimize/maximize)M nerdtree window
+let NERDTreeQuitOnOpen=0
+let NERDTreeShowHidden=1
+" end of plugin details }}}
 
 " NERDtree-git-plugin {{{2
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " SnipMate (disabled) {{{2
 "Plugin 'snipMate'
-"let g:snips_author = "John Evans"
+"let g:snips_author = "$USER Evans"
 
 " Mini buffer explorer {{{2
 Plugin 'minibufexpl.vim'
@@ -602,7 +602,7 @@ nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
 " This keep dropping random characters everywhere and it makes it very
 " difficule to code
 " Install some decent javascript syntax colouring
-Plugin 'othree/yajs.vim'
+"Plugin 'othree/yajs.vim'
 
 " Tabularize {{{2
 Plugin 'godlygeek/tabular'
@@ -662,19 +662,34 @@ Plugin 'winresizer.vim'
 " Abolish {{{2
 Plugin 'tpope/vim-abolish'
 
+" Vim-Javascript {{{2
+Plugin 'pangloss/vim-javascript'
+let g:javascriptenable_dothtmlcss  = 1
+let g:javascript_conceal_function  = "ƒ"
+let g:javascript_conceal_null      = "ø"
+let g:javascript_conceal_this      = "@"
+let g:javascript_conceal_return    = "⇚"
+let g:javascript_conceal_undefined = "¿"
+let g:javascript_conceal_NaN       = "ℕ"
+let g:javascript_conceal_prototype = "¶"
+let g:javascript_conceal_static    = "•"
+let g:javascript_conceal_super     = "Ω"
+
+" Vim-jsx {{{2
+Plugin 'mxw/vim-jsx'
 " End of Vundle stuff {{{2
-    call vundle#end()            " required
-    filetype plugin indent on    " required
-    " To ignore plugin indent changes, instead use:
-    "filetype plugin on
-    "
-    " Brief help
-    " :PluginList       - lists configured plugins
-    " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-    " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-    " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-    " see :h vundle for more details or wiki for FAQ
-    " Put your non-Plugin stuff after this line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
 " Strip trailing spaces from the end of lines {{{2
 "

@@ -5,5 +5,34 @@
     "pip": {
         "description": "Python module intstaller",
         "equo": "dev-python/pip"
+    },
+
+    "composer": {
+        "squizlabs/php_codesniffer",
+        "phpmd/phpmd",
+        "pdepend/pdepend",
+        "fabpot/php-cs-fixer",
+        "php-console/php-console",
+        "behat/behat",
+        "phpunit/phpunit",
+        "phpunit/phpcov",
+        "mockery/mockery"
+    },
+    "gem": {
+        "sass",
+        "mdl"
+    },
+    "npm": {
+        "eslint",
+        "eslint-grunt",
+        "eslint-plugin-mocha",
+        "eslint-plugin-react",
+        "eslint-plugin-requirejs",
+        "grunt",
+        "js-yaml",
+        "jsonlint",
+        "less",
+        "mocha",
+        "webpack"
     }
 }
