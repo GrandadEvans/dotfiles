@@ -677,6 +677,13 @@ let g:javascript_conceal_super     = "Ω"
 
 " Vim-jsx {{{2
 Plugin 'mxw/vim-jsx'
+
+" CTRLp {{{2
+Plugin 'kien/ctrlp.vim'
+let g:ctrlp_map = '<c-p>'
+let g:ctrl_cmd = 'CtrlMixed'
+
+
 " End of Vundle stuff {{{2
 call vundle#end()            " required
 filetype plugin indent on    " required

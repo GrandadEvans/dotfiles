@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+    <head>
+        <title>QuiteRSS</title>
+        <dateModified>Mon Aug 3 17:36:38 2015</dateModified>
+    </head>
+    <body>
+        <outline text="QuiteRSS" type="rss" htmlUrl="http://quiterss.org/en/frontpage" xmlUrl="http://quiterss.org/en/rss.xml"/>
+        <outline text="News">
+            <outline text="BBC News - World" type="rss" htmlUrl="http://www.bbc.co.uk/news/world/#sa-ns_mchannel=rss&amp;ns_source=PublicRSS20-sa" xmlUrl="http://feeds.bbci.co.uk/news/world/rss.xml"/>
+            <outline text="BBC News - Leeds &amp; West Yorkshire" type="rss" htmlUrl="http://www.bbc.co.uk/news/england/leeds_and_west_yorkshire/#sa-ns_mchannel=rss&amp;ns_source=PublicRSS20-sa" xmlUrl="http://feeds.bbci.co.uk/news/england/leeds_and_west_yorkshire/rss.xml"/>
+            <outline text="BBC News - Sheffield &amp; South Yorkshire" type="rss" htmlUrl="http://www.bbc.co.uk/news/england/south_yorkshire/#sa-ns_mchannel=rss&amp;ns_source=PublicRSS20-sa" xmlUrl="http://feeds.bbci.co.uk/news/england/south_yorkshire/rss.xml"/>
+            <outline text="BBC Sport - Swimming" type="rss" htmlUrl="http://www.bbc.co.uk/sport/0/swimming/" xmlUrl="http://feeds.bbci.co.uk/sport/0/swimming/rss.xml"/>
+            <outline text="BBC Sport - Snooker" type="rss" htmlUrl="http://www.bbc.co.uk/sport/0/snooker/" xmlUrl="http://feeds.bbci.co.uk/sport/0/snooker/rss.xml"/>
+            <outline text="BBC News - Business" type="rss" htmlUrl="http://www.bbc.co.uk/news/business/#sa-ns_mchannel=rss&amp;ns_source=PublicRSS20-sa" xmlUrl="http://feeds.bbci.co.uk/news/business/rss.xml"/>
+            <outline text="BBC News - Politics" type="rss" htmlUrl="http://www.bbc.co.uk/news/politics/#sa-ns_mchannel=rss&amp;ns_source=PublicRSS20-sa" xmlUrl="http://feeds.bbci.co.uk/news/politics/rss.xml"/>
+            <outline text="BBC News - Health" type="rss" htmlUrl="http://www.bbc.co.uk/news/health/#sa-ns_mchannel=rss&amp;ns_source=PublicRSS20-sa" xmlUrl="http://feeds.bbci.co.uk/news/health/rss.xml"/>
+            <outline text="BBC News - Education &amp; Family" type="rss" htmlUrl="http://www.bbc.co.uk/news/education/#sa-ns_mchannel=rss&amp;ns_source=PublicRSS20-sa" xmlUrl="http://feeds.bbci.co.uk/news/education/rss.xml"/>
+            <outline text="BBC News - Science &amp; Environment" type="rss" htmlUrl="http://www.bbc.co.uk/news/science_and_environment/#sa-ns_mchannel=rss&amp;ns_source=PublicRSS20-sa" xmlUrl="http://feeds.bbci.co.uk/news/science_and_environment/rss.xml"/>
+            <outline text="BBC News - Technology" type="rss" htmlUrl="http://www.bbc.co.uk/news/technology/#sa-ns_mchannel=rss&amp;ns_source=PublicRSS20-sa" xmlUrl="http://feeds.bbci.co.uk/news/technology/rss.xml"/>
+        </outline>
+        <outline text="Thunderbird Extensions" type="rss" htmlUrl="https://addons.mozilla.org/en-US/thunderbird/" xmlUrl="https://addons.mozilla.org/en-US/thunderbird/extensions/format:rss?sort=created"/>
+        <outline text="Web Development">
+            <outline text="WordPress Plugin">
+                <outline text="WordPress › Support » View: Plugin Support" type="rss" htmlUrl="https://wordpress.org/support/plugin/tel-link-obfuscate" xmlUrl="http://wordpress.org/support/rss/plugin/tel-link-obfuscate"/>
+            </outline>
+            <outline text="Laravel">
+                <outline text="The Laravel Podcast" type="rss" htmlUrl="http://laravel.com" xmlUrl="http://simplecast.fm/podcasts/351/rss"/>
+                <outline text="Laracasts" type="rss" htmlUrl="https://laracasts.com/series/build-project-flyer-with-me" xmlUrl="https://laracasts.com/feed"/>
+            </outline>
+            <outline text="A List Apart: The Abridged Feed" type="rss" htmlUrl="http://alistapart.com" xmlUrl="http://alistapart.com/site/abridged-feed"/>
+            <outline text="Tuts+">
+                <outline text="Tuts+ Code eBooks" type="rss" htmlUrl="http://code.tutsplus.com" xmlUrl="http://code.tutsplus.com/ebooks.atom"/>
+                <outline text="Tuts+ Business eBooks" type="rss" htmlUrl="http://business.tutsplus.com" xmlUrl="http://business.tutsplus.com/ebooks.atom"/>
+                <outline text="Tuts+ Web Design eBooks" type="rss" htmlUrl="http://webdesign.tutsplus.com" xmlUrl="http://webdesign.tutsplus.com/ebooks.atom"/>
+                <outline text="Tuts+ Courses" type="rss" htmlUrl="http://tutsplus.com" xmlUrl="http://tutsplus.com/courses.atom"/>
+            </outline>
+            <outline text="GitHub">
+                <outline text="Private Feed for GrandadEvans" type="rss" htmlUrl="https://github.com/GrandadEvans" xmlUrl="https://github.com/GrandadEvans.private.atom?token=AA2tWum7WiBnX9wX2pegyXxrEeWy2wkcks6y6SLywA=="/>
+            </outline>
+            <outline text="Meets">
+                <outline text="Leeds DevOps" type="rss" htmlUrl="http://www.leedsdevops.org.uk/" xmlUrl="http://www.leedsdevops.org.uk/rss"/>
+            </outline>
+            <outline text="Jenkins CI" type="rss" htmlUrl="http://jenkins-ci.org" xmlUrl="http://feeds.feedburner.com/ContinuousBlog"/>
+            <outline text="JIRA" type="rss" htmlUrl="http://blogs.atlassian.com" xmlUrl="http://blogs.atlassian.com/blog-cat/jira/feed/"/>
+            <outline text="Chef" type="rss" htmlUrl="https://www.chef.io/blog" xmlUrl="https://www.chef.io/blog/feed/"/>
+            <outline text="Splunk" type="rss" htmlUrl="http://blogs.splunk.com" xmlUrl="http://blogs.splunk.com/feed/"/>
+            <outline text="MySQL - New Product Releases" type="rss" htmlUrl="http://dev.mysql.com/downloads/" xmlUrl="http://dev.mysql.com/downloads/rss.php"/>
+            <outline text="Varnish" type="rss" htmlUrl="https://www.varnish-cache.org/" xmlUrl="https://www.varnish-cache.org/planet/feed"/>
+        </outline>
+        <outline text="Security">
+            <outline text="SecurityFocus Vulnerabilities" type="rss" htmlUrl="http://www.securityfocus.com" xmlUrl="http://www.securityfocus.com/rss/vulnerabilities.xml"/>
+            <outline text="National Vulnerability Database" type="rss" htmlUrl="http://web.nvd.nist.gov/view/vuln/search" xmlUrl="https://nvd.nist.gov/download/nvd-rss.xml"/>
+            <outline text="OSVDB" type="rss" htmlUrl="http://blog.osvdb.org" xmlUrl="http://blog.osvdb.org/feed/"/>
+        </outline>
+        <outline text="SkyBet">
+            <outline text="Confluence">
+                <outline text="Confluence RSS Feed" type="rss" htmlUrl="https://tools.skybet.net/confluence" xmlUrl="https://tools.skybet.net/confluence/createrssfeed.action?types=page&amp;pageSubTypes=comment&amp;pageSubTypes=attachment&amp;types=blogpost&amp;blogpostSubTypes=comment&amp;blogpostSubTypes=attachment&amp;types=atlassian-mail&amp;spaces=conf_all&amp;title=Confluence+RSS+Feed&amp;labelString%3D&amp;excludedSpaceKeys%3D&amp;sort=modified&amp;maxResults=10&amp;timeSpan=5&amp;showContent=true&amp;confirm=Create+RSS+Feed&amp;os_authType=basic"/>
+            </outline>
+            <outline text="JIRA">
+                <outline text="My JIRA Feed" type="rss" htmlUrl="https://tools.skybet.net/jira/browse/FH-133" xmlUrl="https://tools.skybet.net/jira/activity?maxResults=10&amp;streams=user+IS+JEV04&amp;os_authType=basic&amp;title=undefined"/>
+            </outline>
+        </outline>
+    </body>
+</opml>
