@@ -1,0 +1,36 @@
+{
+  "name": "dotfiles",
+  "version": "1.0.0",
+  "description": "My Dotfile npm global packages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GrandadEvans/dotfiles.git"
+  },
+  "keywords": [
+    "dotfiles"
+  ],
+  "author": "John Evans <John@GrandadEvans.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GrandadEvans/dotfiles/issues"
+  },
+  "homepage": "https://github.com/GrandadEvans/dotfiles#readme",
+  "dependencies": {
+    "eslint": "^1.0.0",
+    "eslint-grunt": "^1.0.0",
+    "eslint-plugin-mocha": "^0.4.0",
+    "eslint-plugin-react": "^3.1.0",
+    "eslint-plugin-requirejs": "^0.5.1",
+    "grunt": "^0.4.5",
+    "js-yaml": "^3.3.1",
+    "jsonlint": "^1.6.2",
+    "less": "^2.5.1",
+    "markdownlint": "0.0.7",
+    "mocha": "^2.2.5",
+    "sass": "^0.5.0"
+  }
+}
