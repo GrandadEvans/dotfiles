@@ -1,5 +1,5 @@
 # Set the dotfiles firectory
-export DOTFILES_DIR=$DOTFILES_DIR
+export DOTFILES_DIR="$HOME/dotfiles"
 
 # Make vim the default editor
 export EDITOR="vim"

@@ -778,7 +778,12 @@ augroup filetype_vim
         autocmd!
 
         autocmd FileType vim :set foldmethod=marker
-    endif
+
+       " Source the vimrc file after saving it
+       if has("autocmd")
+           autocmd bufwritepost .vimrc source $MYVIMRC
+       endif 
+   endif
 augroup END
 
 " JSON Specefic stuff
@@ -857,7 +862,7 @@ set showtabline=2
 " Press Enter to insert a new line below the cursor & Shift-Enter for line below {{{2
 " Press Shift Enter to insert a new line before the current line
 " Both commands do not take you into INSERT mode
-noremap <S-CR> O<Esc>
+noremap <S-CR> kO<Esc>
 noremap <CR> o<Esc>
 
 " Highlight whitespace at the end of a line in blue {{{2
@@ -890,3 +895,11 @@ noremap <C-J>     <C-W>j
 noremap <C-K>     <C-W>k
 noremap <C-H>     <C-W>h
 noremap <C-L>     <C-W>l
+
+" Move lines/blocks up and down
+" Bubble single lines
+nmap <C-Up> ddkP
+nmap <C-Down> ddp
+" Bubble multiple lines
+vmap <C-Up> xkP`[V`]
+vmap <C-Down> xp`[V`]

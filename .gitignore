@@ -23,3 +23,4 @@ npm/
 .composer/cache/
 .composer/vendor/
 .composer/.htaccess
+gem/

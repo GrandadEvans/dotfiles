@@ -118,6 +118,7 @@ else
     COMPOSER_ACTION="require"
 fi
 composer global $COMPOSER_ACTION
+
 echo -e "Composer set up is now complete"
 
 
