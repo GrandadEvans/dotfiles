@@ -12,3 +12,10 @@ export HISTFILESIZE=$HISTSIZE
 HISTTIMEFORMAT='%F %T '
 
 export HISTTIMEFORMAT
+
+export COMPOSER_HOME="/home/john/dotfiles/.composer"
+
+export NPM_CONFIG_PREFIX=/home/john/dotfiles/npm/
+export GEM_HOME=/home/john/dotfiles/gem/
+export LOAD_PATH=$GEM_HOME
+export PYTHONUSERBASE=/home/john/dotfiles/pip/
