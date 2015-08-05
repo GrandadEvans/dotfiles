@@ -753,6 +753,20 @@ Bundle "wookiehangover/jshint.vim"
     let g:gundo_right = 1
 " }}}
 
+" ShowMarks {{{
+    "Plugin 'showmarks'
+    " <leader>mt toggles showmarks on and off
+    " <leader>mh hides an individual mark
+    " <leader>ma hides all marks in the current buffer
+    " <leader>mm places the mext available mark
+" }}}
+Plugin 'kshenoy/vim-signature'
+
+" Sunburst colorscheme {{{
+    Plugin 'zanloy/vim-colors-sunburst'
+    colorscheme sunburst
+" }}}
+
 " End of Vundle stuff {{{
     call vundle#end()            " required
     filetype plugin indent on    " required
