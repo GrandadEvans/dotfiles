@@ -3,21 +3,23 @@
 name: Work
 root: ~/chef-solo
 
+pre: /usr/bin/supervisord
 pre: vagrant up
 
 windows:
-  - Poker:
-      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
+  - VM:
+      layout: d47a,151x37,0,0{74x37,0,0,0,76x37,75,0,3}
       panes:
         - VM:
           - vagrant ssh
-          - cd /var/lamp/code/poker
+          - cd /var/lamp/code
           - clear
         - Editor:
-          - cd ../vmpokercode
+          - vagrant ssh
+          - cd /var/lamp/code
           - vim
   - Chef-solo:
-      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
+      layout: d47a,151x37,0,0{74x37,0,0,0,76x37,75,0,3}
       panes:
         - Proxy:
           - sudo node proxy.js
@@ -25,7 +27,7 @@ windows:
           - cd /home/john/chef-solo
           - clear
   - BIH:
-      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
+      layout: d47a,151x37,0,0{74x37,0,0,0,76x37,75,0,3}
       panes:
         - Term:
           - cd /home/john/projects/BIH
@@ -34,7 +36,7 @@ windows:
           - cd /home/john/projects/BIH
           - vim
   - SPDC:
-      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
+      layout: d47a,151x37,0,0{74x37,0,0,0,76x37,75,0,3}
       panes:
         - Term:
           - cd /home/john/projects/poker-download-client
@@ -46,7 +48,7 @@ windows:
       - cd /home/john/chef-solo
       - vagrant ssh
   - Dotfiles:
-      layout: 8c10,238x73,0,0{60x73,0,0,0,177x73,61,0,1}
+      layout: d47a,151x37,0,0{74x37,0,0,0,76x37,75,0,3}
       panes:
         - Term:
           - cd ~/dotfiles
@@ -60,3 +62,24 @@ windows:
       panes:
         - Term:
           - cd /home/john
+  - General2:
+      panes:
+        - Term:
+          - cd /home/john
+  - Rest:
+    layout: 90d6,151x37,0,0[151x18,0,0{57x18,0,0,9,36x18,58,0,12,56x18,95,0,13},151x18,0,19{75x18,0,19,10,75x18,76,19,11}]]
+    panes:
+      - TopLeft:
+        - cd ~
+        - weechat
+      - Center:
+        - cd ~
+        - exit
+      - TopRight:
+        - cd ~
+        - while true ; do date +%T | xargs banner ; sleep 1 ; clear ; done
+      - BottomLeft:
+        - cd ~
+        - sudo nethogs wlan0
+      - BottomRight:
+        - htop
