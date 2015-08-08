@@ -1,7 +1,7 @@
 {
     "tree": "Provide tree structure listings in the command line",
     "par": "Better text formatting",
-    "shellcheck": "Lint provider for shell scripts"
+    "shellcheck": "Lint provider for shell scripts",
     "pip": {
         "description": "Python module intstaller",
         "equo": "dev-python/pip"
