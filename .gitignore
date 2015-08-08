@@ -17,3 +17,9 @@
 # Linux
 vendor/
 node_modules/
+bin/
+pip/
+npm/
+.composer/cache/
+.composer/vendor/
+.composer/.htaccess
