@@ -1,0 +1,13 @@
+{
+    "require": {
+        "squizlabs/php_codesniffer": "*",
+        "phpmd/phpmd": "^2.2",
+        "pdepend/pdepend": "^2.1",
+        "fabpot/php-cs-fixer": "^1.10",
+        "php-console/php-console": "3.*",
+        "behat/behat": "^3.0",
+        "phpunit/phpunit": "^4.7",
+        "phpunit/phpcov": "^2.0",
+        "mockery/mockery": "^0.9.4"
+    }
+}
