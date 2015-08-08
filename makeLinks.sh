@@ -1,23 +1,24 @@
+#!/bin/bash
 function installPackage() {
-    local UNAME=`uname -a`
     local INSTALLER_ACTION="install"
 
-    local INSTALLER_LIST=("equo", "yum", "aptitude")
+    local INSTALLER_LIST=("equo" "yum" "aptitude")
     local INSTALLER_NAME=""
+    local INSTALLER_COMMAND=""
 
-    for INSTALLER_NAME in $INSTALLER_LIST; do
-        if `which $INSTALLER_NAME`; then
+    for INSTALLER_NAME in "${INSTALLER_LIST[@]}"; do
+        if which "$INSTALLER_NAME"; then
             # package manager exists
             break
         fi
     done
 
     echo -e "Installing the \"$1\" package using $INSTALLER_NAME"
-    local INSTALLER_COMMAND="`which $INSTALLER_NAME` $INSTALLER_ACTION $1"
-    `$INSTALLER_COMMAND`
+    INSTALLER_COMMAND=/bin/bash which "$INSTALLER_NAME" "$INSTALLER_ACTION" "$1"
+    /bin/bash "$INSTALLER_COMMAND"
 
     # Check to see if the action was successful
-    if [ $? === 0 ]; then
+    if [ $? = 0 ]; then
         echo -e "Installation was successful!"
     else
         echo -e "======================================"
@@ -29,7 +30,7 @@ function installPackage() {
 function makeLink() {
     local SRC=$1
     local DEST=$2
-    $OVERWRITE_LINKS=false
+    local OVERWRITE_LINKS=false
 
     if [ ! -e "$SRC" ]; then
         echo -e "Source file \"$SRC\" does not exist"
@@ -50,11 +51,11 @@ function makeLink() {
                 return
             fi
         fi
-    fi 
+    fi
 
-    `which ln` -sf "$SRC" "$DEST"
-    
-    if [ `echo -e $?` = 0 ]; then
+    /bin/bash which ln -sf "$SRC" "$DEST"
+
+    if [ $? = 0 ]; then
         echo -e "Link was made to \"$DEST/${SRC##*/}\""
     else
         echo -e "======================================"
@@ -67,27 +68,32 @@ function makeLink() {
 }
 
 function makeLinks() {
-    makeLink /home/john/dotfiles/.bashrc ~
-    makeLink /home/john/dotfiles/.bash_profile ~
-    makeLink /home/john/dotfiles/.bash_prompt ~
-    makeLink /home/john/dotfiles/.aliases ~
-    makeLink /home/john/dotfiles/.exports ~
-    makeLink /home/john/dotfiles/.functions ~
-    makeLink /home/john/dotfiles/.gitconfig ~
-    makeLink /home/john/dotfiles/.gitignore ~
-    makeLink /home/john/dotfiles/.path ~
-    makeLink /home/john/dotfiles/.tmux.conf ~
-    makeLink /home/john/dotfiles/.tmuxinator ~
-    makeLink /home/john/dotfiles/.vimrc ~
+    DOTFILES="$HOME/dotfiles"
+
+    makeLink "$DOTFILES/.bashrc"        "$HOME"
+    makeLink "$DOTFILES/.bash_profile"  "$HOME"
+    makeLink "$DOTFILES/.bash_prompt"   "$HOME"
+    makeLink "$DOTFILES/.aliases"       "$HOME"
+    makeLink "$DOTFILES/.exports"       "$HOME"
+    makeLink "$DOTFILES/.functions"     "$HOME"
+    makeLink "$DOTFILES/.gitconfig"     "$HOME"
+    makeLink "$DOTFILES/.gitignore"     "$HOME"
+    makeLink "$DOTFILES/.path"          "$HOME"
+    makeLink "$DOTFILES/.tmux.conf"     "$HOME"
+    makeLink "$DOTFILES/.tmuxinator"    "$HOME"
+    makeLink "$DOTFILES/.vimrc"         "$HOME"
+    makeLink "$DOTFILES/.xinitrc"       "$HOME"
+    makeLink "$DOTFILES/.blueProximity" "$HOME"
+    makeLink "$DOTFILES/.config/autostart/Home" "$HOME/.config/autostart"
 }
 
-makeLinks()
+makeLinks
 
 echo -e "\nSourcing ~/.bashrc"
 source ~/.bashrc
 
 echo -e "\nSetting up Vim"
-if ! `which vim`; then
+if ! which vim; then
     echo -e "Vim is NOT installed so bear with me..."
     installPackage vim
 fi
@@ -99,7 +105,7 @@ vim +PluginInstall +qall
 echo -e "Vim is now set up"
 
 echo -e "\nInstalling Composer dependancies"
-if ! `which composer`; then
+if ! which composer; then
     echo -e "Composer is NOT installed...wait, out!"
     curl -sS https://getcomposer.org/installer | php
     echo -e "\nMoving the newly created composer.phar to ~/.local/share/bin/composer"
