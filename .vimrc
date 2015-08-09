@@ -461,17 +461,6 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 " :Grep SfimdMe -- find in diff of commits
 " :Grep SfimdMe -- % find in diff of commits that touch current file
 
-" Solarized color scheme {{{1
-"Plugin 'altercation/vim-colors-solarized'
-"syntax enable
-"if has('gui_running')
-    "set background=light
-"else
-    "set background=dark
-"endif
-"let g:solarized_termcolors=256
-"colorscheme solarized
-"
 Plugin 'atweiden/vim-colors-behelit'
 colorscheme behelit
 
