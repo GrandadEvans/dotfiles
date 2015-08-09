@@ -2,9 +2,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" Set modeline so that I can use inline/infile vim settings
-set modeline
-
 " Configure spaces not tabss {{{1
 " When the tab key is pressed then insert spaces
 set expandtab
@@ -863,7 +860,3 @@ augroup END
 " Toggle word wrap {{{1
 " Create mapping for <leader>ww = word wrap
 nnoremap <leader>ww :set wrap!<cr>
-
-
-" Config {{{1
-ex: set foldmethod=marker:
