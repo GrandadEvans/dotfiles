@@ -461,9 +461,6 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 " :Grep SfimdMe -- find in diff of commits
 " :Grep SfimdMe -- % find in diff of commits that touch current file
 
-Plugin 'atweiden/vim-colors-behelit'
-colorscheme behelit
-
 " Matchit {{{1
 Plugin 'matchit.zip'
 
