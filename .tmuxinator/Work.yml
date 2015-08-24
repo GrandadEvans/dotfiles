@@ -47,7 +47,7 @@ windows:
   - VM:
       - cd /home/john/chef-solo
       - vagrant ssh
-  - Dotfiles:
+  - dotfiles:
       layout: d47a,151x37,0,0{74x37,0,0,0,76x37,75,0,3}
       panes:
         - Term:

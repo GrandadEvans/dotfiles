@@ -12,10 +12,10 @@ function f() {
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
     local port="${1:-8000}"
-        open "http://localhost:${port}/"
-# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
-# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
-        python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
+    open "http://localhost:${port}/"
+    # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
+    # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
+    python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
 }
 
 # Copy w/ progress
@@ -88,40 +88,36 @@ function ff() {
     find . -type f -iname '*'$*'*' -ls ;
 }
 
-function gitk {
-    /usr/bin/gitk > /dev/null 2> /dev/null & disown
+function garage {
+    /usr/bin/cvlc --no-audio --no-fullscreen --width 1050 http://$SERVERIP:808jj> /dev/null 2> /dev/null & disown
 }
 
 function drive {
     /usr/bin/cvlc --no-audio --no-fullscreen --width 1050 http://$SERVERIP:8081 > /dev/null 2> /dev/null & disown
 }
 
-function gvim {
-    /usr/bin/gvim -f $* > /dev/null 2> /dev/null & disown
-}
-
 # Traverse up the directory using the int supplied
 function up {
+    limit=$1
 
-	limit=$1
-
-    if [ ! $limit ]; then
+    if [ ! $limit ];
+    then
         limit=1
     fi
 
-	for ((i=1 ; i <= $limit ; i++))
-	do
-		cd ../
-	done
+    for ((i=1 ; i <= $limit ; i++))
+    do
+        cd ../
+    done
 }
 
 #netinfo - shows network information for your system
 function netinfo {
     echo "--------------- Network Information ---------------"
-        /sbin/ifconfig | awk /'inet addr/ {print $2}'
-        /sbin/ifconfig | awk /'Bcast/ {print $3}'
-        /sbin/ifconfig | awk /'inet addr/ {print $4}'
-        /sbin/ifconfig | awk /'HWaddr/ {print $4,$5}'
+        $(which ifconfig) | $(which awk) /'inet addr/ {print $2}'
+        $(which ifconfig) | $(which awk) /'Bcast/ {print $3}'
+        $(which ifconfig) | $(which awk) /'inet addr/ {print $4}'
+        $(which ifconfig) | $(which awk) /'HWaddr/ {print $4,$5}'
         myip=`lynx -dump -hiddenlinks=ignore -nolist http://checkip.dyndns.org:8245/ | sed '/^$/d; s/^[ ]*//g; s/[ ]*$//g' `
         echo "${myip}"
         echo "---------------------------------------------------"
@@ -130,39 +126,28 @@ function netinfo {
 # I want to create an alias that finds text in files
 function find-string() {
 
-	# Re-iterate what we're looking for
+    # Re-iterate what we're looking for
     echo 'Looking for "'$1'"'
 
-	# Perform a search on all files
+    # Perform a search on all files
     find ./ -xdev -type f -print0 | \
 
-	# process each file through the grep,
-	#    --colour=always    = always show the coloured version
-	#    --ignore-case      = Search is NOT case-sesitive
-	#    --line-number      = Show the line numbers after the filename
-	#    --context=1        = This will print 1 line both above and below the line where the string occurs
-	#    "${1}"             = Finally search for the passed variable
-	        xargs -0 grep --colour=always --ignore-case --line-number --context=${2} "${1}" | \
+    # process each file through the grep,
+    #    --colour=always    = always show the coloured version
+    #    --ignore-case      = Search is NOT case-sesitive
+    #    --line-number      = Show the line numbers after the filename
+    #    --context=1        = This will print 1 line both above and below the line where the string occurs
+    #    "${1}"             = Finally search for the passed variable
+    xargs -0 grep --colour=always --ignore-case --line-number --context=${2} "${1}" | \
 
-	# Replace each tab with 2 spaces to cut down on the amount of indentation in
-	# the search results from files with large areas of indentation
-	        sed -re 's/\t/  /g'
-
+    # Replace each tab with 2 spaces to cut down on the amount of indentation in
+    # the search results from files with large areas of indentation
+    sed -re 's/\t/  /g'
 }
 
 function hl {
-	echo "\nListing the last $1 entries in your history, Master\n"
-	history | tail -$1
-}
-
-###########################################################
-# Function to automatically insert the git branch in commits
-###########################################################
-function gc {
-	local BRANCH=`git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'`
-	local MESSAGE=$1
-	local FULL="[refs $BRANCH] $MESSAGE"
-	git commit -m "$FULL"
+    echo "\nListing the last $1 entries in your history, Oh Master\n"
+        history | tail -$1
 }
 
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
@@ -172,3 +157,124 @@ function gc {
 function tre() {
     tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
+# Check to see if a program exists
+# The last command exit status will be 0 if the program does exist
+# and 1 if the program does not exist
+function programExists() {
+    #test command "$1"
+    command -v "$1" >/dev/null 2>&1 || { echo >&2 "I require $1 but it's not installed.  Aborting."; return 1; }
+}
+
+# Find the package installer that you the current linux system is using
+function findInstaller() {
+    local installer_list=("equo" "yum" "aptitude")
+
+    for package_manager in "${installer_list[@]}"; do
+        programExists "$package_manager"
+        if [ $? = 0 ];
+        then
+            break
+        fi
+    done
+
+    if [[ "$packageManager" = "equo" ]];
+    then
+        quite_install="--quiet"
+    fi
+
+    export package_manager
+    export quiet_install
+}
+
+# Find out which distro we are using
+function findDistro() {
+    distro=$(lsb_release -i | xargs | cut -d':' -f2)
+    export distro
+}
+
+# Install the provided package
+function installPackage() {
+    # Check for specialist install file
+    echo -e "\n${cyan}Installing package: $1${reset}"
+    if [ -f "customInstallers/$1" ];
+    then
+        echo "${cyan}Custom installer provided so using that${reset}"
+        source "customInstallers/$1"
+    else
+        programExists "$1"
+        if [ $? = 1 ];
+        then
+            echo -e "${cyan}Installing \"$1\"${reset}"
+            sudo "$package_manager" install "$1" > $install_log
+        else
+            echo -e "${green}\"$1\" is already installed so moving on...${reset}"
+            return
+        fi
+
+        # Check to see if the action was successful
+        if [ $? = 0 ];
+        then
+            echo -e "${light_green}Installation was successful!${reset}"
+        else
+            echo -e "${light_red}======================================"
+            echo -e "There was an error installing $1"
+            echo -e "======================================${reset}"
+        fi
+    fi
+}
+
+function makeLink() {
+    if ! $skip_links;
+    then
+        local src=$1
+        local dest=$2
+
+        # Check to make sure the source file exists
+        if [ ! -e "$src" ];
+        then
+            echo -e "${light_red}Source file \"$src\" does not exist${reset}"
+        fi
+
+        if  [ ! "$overwrite_links" ];
+        then
+            # Check for an existing destination file
+            if [ -e "$dest" ];
+            then
+                echo -ne "${cr}${light_red}The destination file \"$dest/${src##*/}\" already exists,${cr}${reset}do you wish to overwrite it: (${yellow}Y${reset})es; (${yellow}N${reset})o; (${yellow}A${reset})ll; (${yellow}S${reset})kip all: "
+                read -n 1
+                if [[ $REPLY =~ ^[Nn]*$ ]];
+                then
+                    echo -e "\n${light_red}Aborting link${reset}"
+                    return
+                elif [[ $REPLY =~ ^[aA]*$ ]];
+                then
+                    echo -e "\n${light_green}Overwriting all existing links${reset}"
+                    overwrite_links=true
+                elif [[ $REPLY =~ ^[Ss]*$ ]];
+                then
+                    echo -e "\n${light_red}Skipping all the links until this script is next run${reset}"
+                    skip_links=true
+                    return
+                fi
+            fi
+        fi
+
+        command $(which ln) --symbolic --force "$src" "$dest"
+
+        if [ $? = 0 ];
+        then
+            echo -e "${cr}${light_green}Link was made from \"$src\" to \"$dest\"${reset}"
+        else
+            echo -e "${red}======================================"
+            echo -e "There was an error making a link from:"
+            echo -e "$src"
+            echo -e "    to..."
+            echo -e "$dest"
+            echo -e "======================================${reset}"
+        fi
+
+        export overwrite_links
+        export skip_links
+    fi
+}
+

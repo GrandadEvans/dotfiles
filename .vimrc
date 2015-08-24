@@ -140,9 +140,9 @@ iabbrev Teh        The
 iabbrev teh        the
 
 " Map the save and new tab keys {{{2
-noremap <C-s> <esc>:w<CR>
-inoremap <C-s> <esc>:w<CR>
-noremap <C-t> <esc>:tabnew<CR>
+noremap <C-s> <esc>:w<cr>
+inoremap <C-s> <esc>:w<cr>
+noremap <C-t> <esc>:tabnew<cr>
 
 " Bind the :W to :w (typo) {{{2
 command! W w
@@ -152,8 +152,8 @@ command! Qall qall
 command! Wall wall
 
 " Edit and source ~/.vimrc {{{2
-nnoremap <silent> <leader>ev :split $MYVIMRC<CR>
-nnoremap <silent> <leader>sv :source $MYVIMRC<CR>
+nnoremap <silent> <leader>ev :split $MYVIMRC<cr>
+nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 
 " ******************** Searches ******************** {{{2
 
@@ -167,13 +167,13 @@ set hlsearch
 " Search around line breaks {{{3
 set wrapscan
 " Search the current file for what's currently in the search register and display matches
-nnoremap <silent> <leader>gs :vimgrep /<C-r>// %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+nnoremap <silent> <leader>gs :vimgrep /<C-r>// %<cr>:ccl<cr>:cwin<cr><C-W>J:nohls<cr>
 
 " Search the current file for the word under the cursor and display matches
-nnoremap <silent> <leader>gw :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+nnoremap <silent> <leader>gw :vimgrep /<C-r><C-w>/ %<cr>:ccl<cr>:cwin<cr><C-W>J:nohls<cr>
 
 " Search the current file for the WORD under the cursor and display matches
-nnoremap <silent> <leader>gW :vimgrep /<C-r><C-a>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+nnoremap <silent> <leader>gW :vimgrep /<C-r><C-a>/ %<cr>:ccl<cr>:cwin<cr><C-W>J:nohls<cr>
 
 " Automatically save the states of the buffers on exit and load them on entry {{{2
 au BufWinLeave * silent! mkview
@@ -225,7 +225,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'taglist.vim'
 " Plugin details {{{
 " Set the toggle key
-nnoremap <silent> <F8> :TlistToggle<CR>
+nnoremap <silent> <F8> :TlistToggle<cr>
 " Open the taglist on vim start-up
 let Tlist_Auto_Open = 0
 " Press o to open in new window
@@ -261,13 +261,13 @@ let Tlist_Process_File_Always=1
 let Tlist_Use_Right_Window=1
 
 " Map <leader>tt to the toggle taglist function
-nnoremap <silent> <leader>tt :TlistToggle<CR>
+nnoremap <silent> <leader>tt :TlistToggle<cr>
 
 " map <leader>to to the tags open function
-nnoremap <silent> <leader>to :TlistOpen<CR>
+nnoremap <silent> <leader>to :TlistOpen<cr>
 
 " map <leader>tc to the tags close function
-nnoremap <silent> <leader>tc :TlistClose<CR>
+nnoremap <silent> <leader>tc :TlistClose<cr>
 
 " Automatically highlight the current tag in the taglist
 let Tlist_Auto_Highlight_Tag=1
@@ -277,7 +277,7 @@ let Tlist_Auto_Highlight_Tag=1
 Plugin 'scrooloose/nerdtree'
 " Plugin details {{{
 "Map the usual nerdtree key to the toggle
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
+nnoremap <silent> <F3> :NERDTreeToggle<cr>
 " Close nerdtree if its the only window left?
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "NERDTreeFind Fins the current file in nerdtree
@@ -317,6 +317,7 @@ let NERDTreeShowHidden=1
 " NERDtree-git-plugin {{{2
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
+
 " SnipMate (disabled) {{{2
 "Plugin 'snipMate'
 "let g:snips_author = "$USER Evans"
@@ -332,8 +333,8 @@ Plugin 'minibufexpl.vim'
 ":MBEbp switch to previous normal buffer in current window
 ":MBEbf move forward in recent buffer list
 ":MBEbb move backwards in recent buffer list
-noremap <C-TAB>   :MBEbn<CR>
-noremap <C-S-TAB> :MBEbp<CR>
+noremap <C-TAB>   :MBEbn<cr>
+noremap <C-S-TAB> :MBEbp<cr>
 " use single click in the buffer explorer bar
 let g:miniBufExplUseSingleClick = 1
 
@@ -501,6 +502,15 @@ Plugin '2072/PHP-Indenting-for-VIm'
 " Use indentation for switch/case statements
 let g:PHP_vintage_case_default_indent = 1
 
+" phpqa
+"Bundle 'joonty/vim-phpqa.git'
+"let g:phpqa_codesniffer_args = "--standard=PSR2"
+"" Don't run codesniffer on save (default = 1)
+"let g:phpqa_codesniffer_autorun = 0
+"" Clover code coverage XML file
+"let g:phpqa_codecoverage_file = "tests/codeception/_output/coverage.xml"
+" Show markers for lines that ARE covered by tests (default = 1)
+"let g:phpqa_codecoverage_showcovered = 0
 " Syntastic {{{2
 Plugin 'scrooloose/syntastic'
 let g:syntastic_always_populate_loc_list = 1
@@ -517,14 +527,15 @@ let g:syntastic_json_checkers            = ['jsonlint']
 let g:syntastic_less_checkers            = ['lessc']
 let g:syntastic_python_checkers          = ['pylint']
 let g:syntastic_markdown_checkers        = ['mdl']
-let g:syntastic_php_checkers             = ['php', 'phpcs', 'phpmd']
+"let g:syntastic_php_checkers             = ['php', 'phpcs', 'phpmd']
+"let g:syntastic_php_checkers             = ['php', 'phpmd']
 let g:syntastic_sh_checkers              = ['shellcheck']
 let g:syntastic_yaml_checkers            = ['jsyaml']
 " To run explicit checkers run :SyntasticCheck phpcs phpmd
 "tell it when to run the checks
 let g:syntastic_mode_map = {
             \ "mode": "active",
-            \ "active_filetypes": ["php", "Javascript", "css"],
+            \ "active_filetypes": ["Javascript", "css"],
             \ "passive_filetypes": []
             \}
 
@@ -534,11 +545,11 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 " Vim-auto-save (disabled but try with tmux2) {{{2
-Plugin '907th/vim-auto-save'
-" Enable auto_save on start
-let g:auto_save = 1
-" Do not check the update time
-let g:auto_save_no_updatetime = 1
+"Plugin '907th/vim-auto-save'
+"" Enable auto_save on start
+"let g:auto_save = 1
+"" Do not check the update time
+"let g:auto_save_no_updatetime = 1
 
 " CSS_Color {{{2
 Plugin 'css_color.vim'
@@ -572,7 +583,7 @@ let g:airline_powerline_fonts = 1
 set laststatus=2
 
 Plugin 'chriskempson/tomorrow-theme'
-colorscheme Tomorrow-Night-Eighties
+"colorscheme Tomorrow-Night-Eighties
 
 " Vim-gitgutter {{{2
 "Plugin 'airblade/vim-gitgutter********************'
@@ -584,19 +595,19 @@ let g:gitgutter_map_keys = 0
 let g:gitgutter_highlight_lines = 0
 
 " PHP-cs-fixer {{{2
-Plugin 'stephpy/php-cs-fixer'
+"Plugin 'stephpy/php-cs-fixer'
 " If php-cs-fixer is in $PATH, you don't need to define line below
 " let g:php_cs_fixer_path = "~/php-cs-fixer.phar" " define the path to the php-cs-fixer.phar
-let g:php_cs_fixer_level = "php-2"              " which level ?
-let g:php_cs_fixer_config = "default"             " configuration
-let g:php_cs_fixer_php_path = "/usr/bin/php"               " Path to PHP
+"let g:php_cs_fixer_level = "php-2"              " which level ?
+"let g:php_cs_fixer_config = "default"             " configuration
+"let g:php_cs_fixer_php_path = "/usr/bin/php"               " Path to PHP
 " If you want to define specific fixers:
 "let g:php_cs_fixer_fixers_list = "linefeed,short_tag,indentation"
-let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
-let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
-let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
-nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
-nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
+"let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
+"let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
+"let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
+"nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<cr>
+"nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<cr>
 
 " YA.js (disabled) {{{2
 " This keep dropping random characters everywhere and it makes it very
@@ -609,7 +620,7 @@ Plugin 'godlygeek/tabular'
 
 " Gundo {{{2
 Plugin 'sjl/gundo.vim'
-nnoremap <F6> :GundoToggle<CR>
+nnoremap <F6> :GundoToggle<cr>
 " Press Enter on an entry to select the entry
 " Press "p" in order to preview the undo entry
 "
@@ -626,35 +637,35 @@ let g:gundo_right = 1
 Plugin 'kshenoy/vim-signature'
 
 " Sunburst colorscheme {{{2
-"Plugin 'zanloy/vim-colors-sunburst'
-"colorscheme sunburst
+Plugin 'zanloy/vim-colors-sunburst'
+colorscheme sunburst
 
 " PHPUnit-QF {{{2
-Bundle 'joonty/vim-phpunitqf.git'
+"Bundle 'joonty/vim-phpunitqf.git'
 " This function from the plugin homepage seems to be axactly what I wanted
 "
 " I do need to modify it for the new test file structure
 "
 " Let PHPUnitQf use the callback function
-let g:phpunit_callback = "CakePHPTestCallback"
+"let g:phpunit_callback = "CakePHPTestCallback"
 
-function! CakePHPTestCallback(args)
-    " Trim white space
-    let l:args = substitute(a:args, '^\s*\(.\{-}\)\s*$', '\1', '')
+"function! CakePHPTestCallback(args)
+    "" Trim white space
+    "let l:args = substitute(a:args, '^\s*\(.\{-}\)\s*$', '\1', '')
 
-    " If no arguments are passed to :Test
-    if len(l:args) is 0
-        let l:file = expand('%')
-        if l:file =~ "^app/Test/Case.*"
-            " If the current file is a unit test
-            let l:args = substitute(l:file,'^app/Test/Case/\(.\{-}\)Test\.php$','\1','')
-        else
-            " Otherwise try and run the test for this file
-            let l:args = substitute(l:file,'^app/\(.\{-}\)\.php$','\1','')
-        endif
-    endif
-    return l:args
-endfunction
+    "" If no arguments are passed to :Test
+    "if len(l:args) is 0
+        "let l:file = expand('%')
+        "if l:file =~ "^app/Test/Case.*"
+            "" If the current file is a unit test
+            "let l:args = substitute(l:file,'^app/Test/Case/\(.\{-}\)Test\.php$','\1','')
+        "else
+            "" Otherwise try and run the test for this file
+            "let l:args = substitute(l:file,'^app/\(.\{-}\)\.php$','\1','')
+        "endif
+    "endif
+    "return l:args
+"endfunction
 
 " Easy window resizing {{{2
 Plugin 'winresizer.vim'
@@ -736,23 +747,23 @@ augroup filetype_php
         autocmd!
 
         " Before a file is written strip any traililng whitespace
-        autocmd BufWritePre *.php :call <SID>StripTrailingWhitespaces()
+        "autocmd BufWritePre *.php :call <SID>StripTrailingWhitespaces()
 
-        " When a file is written I want to run the unit tests for this file if
-        autocmd BufWritePre *.php :call  :Test
+        "" When a file is written I want to run the unit tests for this file if
+        "autocmd BufWritePre *.php :call  :Test
 
-        autocmd FileType php :iabbrev <buffer> fn function<cr>{<cr>XContent<cr>}jkk0C
-        autocmd FileType php :iabbrev <buffer> pubf public function<cr>{<cr>XContent<cr>}jkk0C
-        autocmd FileType php :iabbrev <buffer> prof protected function<cr>{<cr>XContent<cr>}jkk0C
-        autocmd FileType php :iabbrev <buffer> prif private function<cr>{<cr>XContent<cr>}jkk0C
-        autocmd FileType php :iabbrev <buffer> pubsf public static function<cr>{<cr>XContent<cr>}jkk0C
-        autocmd FileType php :iabbrev <buffer> prosf protected static function<cr>{<cr>XContent<cr>}jkk0C
-        autocmd FileType php :iabbrev <buffer> prisf private static function<cr>{<cr>XContent<cr>}jkk0C
-        autocmd FileType php :iabbrev <buffer> cl class<cr>{<cr>XContent<cr>}jkk0C
+        "autocmd FileType php :iabbrev <buffer> fn function<cr>{<cr>XContent<cr>}jkk0C
+        "autocmd FileType php :iabbrev <buffer> pubf public function<cr>{<cr>XContent<cr>}jkk0C
+        "autocmd FileType php :iabbrev <buffer> prof protected function<cr>{<cr>XContent<cr>}jkk0C
+        "autocmd FileType php :iabbrev <buffer> prif private function<cr>{<cr>XContent<cr>}jkk0C
+        "autocmd FileType php :iabbrev <buffer> pubsf public static function<cr>{<cr>XContent<cr>}jkk0C
+        "autocmd FileType php :iabbrev <buffer> prosf protected static function<cr>{<cr>XContent<cr>}jkk0C
+        "autocmd FileType php :iabbrev <buffer> prisf private static function<cr>{<cr>XContent<cr>}jkk0C
+        "autocmd FileType php :iabbrev <buffer> cl class<cr>{<cr>XContent<cr>}jkk0C
 
-        autocmd FileType php :iabbrev <buffer> return No! Use "rn" abbreviation moron!
-        autocmd FileType php :iabbrev <buffer> ns namespace
-        autocmd FileType php :iabbrev <buffer> rn return
+        "autocmd FileType php :iabbrev <buffer> return No! Use "rn" abbreviation moron!
+        "autocmd FileType php :iabbrev <buffer> ns namespace
+        "autocmd FileType php :iabbrev <buffer> rn return
 
         "autocmd FileType php :inoremap <silent> \: \:
     endif
@@ -833,7 +844,7 @@ nnoremap L $
 inoremap jk <esc>
 " Disables the default <esc> key in insert mode so that I have to use the
 " above
-inoremap <esc> <nop>
+"inoremap <esc> <nop>
 
 " Disable the arrow keys {{{3
 inoremap <up> <nop>
@@ -853,7 +864,7 @@ vnoremap <right> <nop>
 " Create mapping for <leader>ww = word wrap
 nnoremap <leader>ww :set wrap!<cr>
 " map :c-all to copy all {{{2
-noremap <Leader>c-all :%y<CR>
+noremap <Leader>c-all :%y<cr>
 
 
 " Show the tabline if there are 2 or more tabs {{{2
@@ -862,8 +873,8 @@ set showtabline=2
 " Press Enter to insert a new line below the cursor & Shift-Enter for line below {{{2
 " Press Shift Enter to insert a new line before the current line
 " Both commands do not take you into INSERT mode
-noremap <S-CR> kO<Esc>
-noremap <CR> o<Esc>
+noremap <S-cr> kO<Esc>
+noremap <cr> o<Esc>
 
 " Highlight whitespace at the end of a line in blue {{{2
 " http://vimbits.com/bits/259
@@ -888,7 +899,7 @@ noremap <C-6> 6gt
 noremap <C-7> 7gt
 noremap <C-8> 8gt
 noremap <C-9> 9gt
-noremap <C-0> :tablast<CR>
+noremap <C-0> :tablast<cr>
 
 " Easy window navigation {{{2
 noremap <C-J>     <C-W>j

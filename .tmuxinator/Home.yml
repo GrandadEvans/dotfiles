@@ -1,13 +1,16 @@
 # ~/.tmuxinator/Home.yml
 
 name: Home
-root: ~/projects/
+root: ~/
 
 # Optional tmux socket
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
-pre: /usr/bin/supervisord
+pre:
+  - sudo cd ~
+  - /usr/bin/supervisord
+  - cd ~/dotfiles
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
@@ -19,7 +22,7 @@ pre: /usr/bin/supervisord
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-# startup_window: logs
+startup_window: dotfiles
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
@@ -28,20 +31,18 @@ pre: /usr/bin/supervisord
 # post: tmux -CC attach -t Home
 
 windows:
-  - Dotfiles:
+  - dotfiles:
       layout: d47a,151x37,0,0{74x37,0,0,0,76x37,75,0,3}
       panes:
-        - Vim
-          - cd ~/dotfiles
+        - Vim:
           - git stash
           - git pull
           - git stash pop
           - vim
-        - CLI
-          - cd ~/dotfiles
+        - CLI:
           - clear
-  - Logs:
-    - multitail `cat ~/dotfiles/logs-to-monitor.txt`
+  #- Logs:
+    #- multitail `cat ~/dotfiles/logs-to-monitor.txt`
   - Htop:
     - htop
   - General-1:
@@ -50,3 +51,11 @@ windows:
   - General-2:
     - cd ~
     - clear
+  - Updates:
+    - sudo equo update
+  - MPC:
+    - cd /home/john/projects/MPC
+    - vim
+  - MPC-terminal:
+    - cd /home/john/projects/MPC
+    - gulp

@@ -1,7 +1,7 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
-guard 'sass', :input => 'sass', :output => 'css'
+guard 'sass', :input => 'scss', :output => 'css'
 
 # Add files and commands to this file, like the example:
 #   watch(%r{file/path}) { `command(s)` }
@@ -14,10 +14,10 @@ guard :shell do
 end
 
 guard 'phpunit', :tests_path => 'Tests', :cli => '--colors' do
-  Watch tests files
+  # Watch tests files
   watch(%r{^.+Test\.php$})
 
-  Watch library files and run their tests
+  # Watch library files and run their tests
   watch(%r{^Object/(.+)\.php}) { |m| "Tests/#{m[1]}Test.php" }
 end
 
@@ -26,9 +26,7 @@ end
 #guard :concat, type: "css", files: %w(), input_dir: "public/css", output: "public/css/all"
 
 # Installed by guard-mocha-node
-
 # JavaScript/CoffeeScript watchers
-
 guard 'mocha-node', :mocha_bin => File.expand_path(File.dirname(__FILE__) + "/node_modules/mocha/bin/mocha") do
   watch(%r{^spec/(.+)_spec\.(js\.coffee|js|coffee)})  { |m| "spec/#{m[1]}_spec.#{m[2]}" }
   watch(%r{^lib/(.+)\.(js\.coffee|js|coffee)})        { |m| "spec/lib/#{m[1]}_spec.#{m[2]}" }

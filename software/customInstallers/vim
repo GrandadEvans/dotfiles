@@ -1,0 +1,16 @@
+echo -e "Setting up Vim"
+programExists vim
+if [ $? = 1 ];
+then
+    $package_installer vim
+fi
+
+if [ ! -d  ~/.vim/bundle/Vundle.vim ];
+then
+    echo -e "Installing vim packages...please wait, over"
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+vim +PluginInstall +qall
+echo -e "Vim is now set up"
+
+

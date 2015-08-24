@@ -1,0 +1,104 @@
+#!/bin/bash --debug
+source ./colours.sh
+
+if (( ping google.com ));
+then
+    online=true
+else
+    online=false
+fi
+export online
+
+# We need root priviledges for some of the install scripts
+# So let's start off by asking for the correct rights
+clear
+echo "Actions:"
+echo "    1. Make links"
+echo "    2. Install essential software"
+echo "    3. Install non-essential software"
+echo "    4. Install software from package managers:"
+echo "        a. composer"
+echo "        b. npm"
+echo "        c. gem"
+echo -e "${yellow}For some of this script I need to perform actions as root!"
+echo -e "With that mind please entier your password to continue${reset}"
+sudo -v
+echo "Making sure the system has the correct time before we start"
+
+if online;
+then
+    sudo ntpdate -s time.nost.gov
+else
+    echo -e "${red}You are not online so I am unable to update your time${reset}"
+fi
+
+# Source the functions file as it contains the functions that we want
+source ./.exports
+source ./.functions
+
+export install_log="install_log_$(date).log"
+
+# Find out what distro we are using
+findDistro
+echo -e "Distro is: ${light_purple}${distro}${reset}"
+
+# and find the package manager that we should be using
+findInstaller
+echo -e "Package manager is: ${light_purple}${package_manager}${reset}"
+
+# Create our home directory
+if [ ! -d "$HOME/bin" ]; then
+    mkdir "$user_bin"
+fi
+
+# Function to make links...durgh!
+echo -e "\nMaking links"
+makeLink "$dotfiles/.path"                    "$HOME"
+makeLink "$dotfiles/.vimrc"                   "$HOME"
+makeLink "$dotfiles/.bashrc"                  "$HOME"
+makeLink "$dotfiles/.aliases"                 "$HOME"
+makeLink "$dotfiles/.exports"                 "$HOME"
+makeLink "$dotfiles/.composer"                "$HOME"
+#makeLink "$dotfiles/.eslintrc"               "$HOME"
+makeLink "$dotfiles/.tmux.conf"               "$HOME"
+makeLink "$dotfiles/.functions"               "$HOME"
+makeLink "$dotfiles/.gitconfig"               "$HOME"
+makeLink "$dotfiles/.gitignore"               "$HOME"
+makeLink "$dotfiles/.tmuxinator"              "$HOME"
+makeLink "$dotfiles/.colours.sh"              "$HOME"
+makeLink "$dotfiles/.bash_prompt"             "$HOME"
+makeLink "$dotfiles/.bash_profile"            "$HOME"
+makeLink "$dotfiles/rss-feeds.opml"           "$HOME"
+makeLink "$dotfiles/software/update"          "$HOME/update"
+makeLink "$dotfiles/software/install"         "$HOME/install"
+makeLink "$dotfiles/.config/autostart/$place" "$HOME/.config/autostart"
+echo "All links made"
+
+# Now that we have made the links to the proper files
+# we want to source them
+echo -e "\nSourcing ~/.bashrc"
+source ~/.bashrc
+
+# Install essential software
+echo -e "\n\n\nAbout to start installing programs so I need your password\n\n\n"
+sudo -v
+if online;
+then
+    installPackage git
+    installPackage vim
+    installPackage curl
+    installPackage jq
+    installPackage php
+
+    # Install the rest of the software
+    installPackage composer
+    installPackage virtualbox-bin
+    installPackage virtualbox-modules
+    installPackage virtualbox-guest-additions
+    installPackage tree
+    installPackage par
+    installPackage shellcheck
+    installPackage pip
+else
+    echo -e "${red}You are not online so I am unable to install the remainfer of the software${reset}"
+fi

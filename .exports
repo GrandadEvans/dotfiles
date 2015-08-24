@@ -1,5 +1,17 @@
-# Set the dotfiles firectory
-export DOTFILES_DIR="$HOME/dotfiles"
+# Set the dotfiles directory
+export dotfiles_dir="$HOME/dotfiles"
+
+#Set the install home
+user_bin=$HOME/bin
+export user_bin
+
+essential_software=("git" "curl" "jq" "php")
+dotfiles="$dotfiles_dir"
+skip_links=false
+
+cr=`echo $'\n.'`
+cr=${cr%.}
+export cr
 
 # Make vim the default editor
 export EDITOR="vim"
@@ -16,12 +28,16 @@ HISTTIMEFORMAT='%F %T '
 
 export HISTTIMEFORMAT
 
-PATH=$PATH:/opt/local/bin
-PATH=$PATH:/usr/bin
+# Set the home for composer files
+export COMPOSER_HOME="$dotfiles_dir/.composer"
 
-export COMPOSER_HOME="$DOTFILES_DIR/.composer"
 
-export NPM_CONFIG_PREFIX=$DOTFILES_DIR/npm/
-export GEM_HOME=$DOTFILES_DIR/gem/
+# Set the home for npm files
+export NPM_CONFIG_PREFIX=$dotfiles_dir/npm/
+
+# Set the home for gem files
+export GEM_HOME=$dotfiles_dir/gem/
 export LOAD_PATH=$GEM_HOME
-export PYTHONUSERBASE=$DOTFILES_DIR/pip/
+
+# Set the home for python pip files
+export PYTHONUSERBASE=$dotfiles_dir/pip/

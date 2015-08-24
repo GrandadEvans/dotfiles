@@ -1,0 +1,15 @@
+#!/bin/bash
+
+vagrant box add laravel/homestead https://atlas.hashicorp.com/laravel/boxes/homestead
+
+while [ "$?" -eq "1" ];
+do
+    sleep 30
+    vagrant box add laravel/homestead https://atlas.hashicorp.com/laravel/boxes/homestead
+done
+
+
+composer global require "laravel/homestead=~2.0"
+
+homestead init
+

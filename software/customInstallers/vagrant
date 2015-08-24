@@ -1,0 +1,9 @@
+if $package_manager = "equo";
+then
+    sudo equo install vagrant
+fi
+
+vagrant box add puppetlabs/centos-7.0-64-puppet
+
+vagrant box add laravel/homestead
+

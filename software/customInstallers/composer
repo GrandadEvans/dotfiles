@@ -1,0 +1,20 @@
+echo -e "Installing Composer & it's dependancies"
+
+# Download the composer file
+curl -sS https://getcomposer.org/installer | php
+
+# Rename the file and move to bin directory
+mv composer.phar "$user_bin/composer"
+
+# Make sure the file is executable
+chmod +x "$user_bin/composer"
+
+if [ -f ~/.composer/composer.lock ];
+then
+    composer_action="install"
+else
+    composer_action="require"
+fi
+composer global $composer_action
+
+echo -e "Composer set up is now complete"
