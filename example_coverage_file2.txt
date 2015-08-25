@@ -1,0 +1,5 @@
+PHPUnit 4.3.5 by Sebastian Bergmann.
+
+Configuration read from /var/lamp/code/bingoportal/php/phpunit.xml
+
+..........

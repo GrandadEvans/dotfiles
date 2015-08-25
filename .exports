@@ -41,3 +41,7 @@ export LOAD_PATH=$GEM_HOME
 
 # Set the home for python pip files
 export PYTHONUSERBASE=$dotfiles_dir/pip/
+
+# set some coverage details
+export tests_base="./php/tests"
+

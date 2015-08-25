@@ -50,42 +50,42 @@ function last_coverage() {
     then
         git_base=$(git rev-parse --show-toplevel)
 
-        coverage_report_file="${git_base}/tests/coverage_report.txt" 
-        coverage_report=$(cat "${coverage_report_file}" | grep "Summary" -A4)
+        coverage_report_file="php/tests/coverage_report.txt" 
         if [ -f "${coverage_report_file}" ];
         then
-            classes_coverage=$(echo "${coverage_report}" | grep "Classes:" | sed -e 's/^\s*Classes:\s*\([0-9]*\).*$/\1/')
-            methods_coverage=$(echo "${coverage_report}" | grep "Methods:" | sed -e 's/^\s*Methods:\s*\([0-9]*\).*$/\1/')
-            lines_coverage=$(echo "${coverage_report}" | grep "Lines:" | sed -e 's/^\s*Lines:\s*\([0-9]*\).*$/\1/')
+            coverage_report=$(cat "${coverage_report_file}" | grep "Summary" -A4)
+            classes_coverage=$(echo "${coverage_report}" | grep "Classes:" | sed -e 's/\s*Classes:\s*\([0-9]*\).*$/\1/')
+            methods_coverage=$(echo "${coverage_report}" | grep "Methods:" | sed -e 's/\s*Methods:\s*\([0-9]*\).*$/\1/')
+            lines_coverage=$(echo "${coverage_report}" | grep "Lines:" | sed -e 's/\s*Lines:\s*\([0-9]*\).*$/\1/')
 
-            if (( "$classes_coverage" < 35 ));
+            if [[ $classes_coverage < 35 ]];
             then
-                classes_coverage_text="\033[30;41m C: ${classes_coverage}% ${reset}"
-            elif (( "$classes_coverage" < 70 ));
+                classes_coverage_text=" C: ${classes_coverage}% ${reset}"
+            elif [[ $classes_coverage < 70 ]];
             then
-                classes_coverage_text="\033[30;43m C: ${classes_coverage}% ${reset}"
+                classes_coverage_text=" C: ${classes_coverage}% ${reset}"
             else
-                classes_coverage_text="\033[30;42m C: ${classes_coverage}% ${reset}"
+                classes_coverage_text=" C: ${classes_coverage}% ${reset}"
             fi
 
-            if (( "$lines_coverage" < 35 ));
+            if [[ $lines_coverage < 35 ]];
             then
-                lines_coverage_text="\033[30;41m L: ${lines_coverage}% ${reset}"
-            elif (( "$lines_coverage" < 70 ));
+                lines_coverage_text=" L: ${lines_coverage}% ${reset}"
+            elif [[ $lines_coverage < 70 ]];
             then
-                lines_coverage_text="\033[30;43m L: ${lines_coverage}% ${reset}"
+                lines_coverage_text=" L: ${lines_coverage}% ${reset}"
             else
-                lines_coverage_text="\033[30;42m L: ${lines_coverage}% ${reset}"
+                lines_coverage_text=" L: ${lines_coverage}% ${reset}"
             fi
 
-            if (( "$methods_coverage" < 35 ));
+            if [[ $methods_coverage < 35 ]];
             then
-                methods_coverage_text="\033[30;41m M: ${methods_coverage}% ${reset}"
-            elif (( "$methods_coverage" < 70 ));
+                methods_coverage_text=" M: ${methods_coverage}% ${reset}"
+            elif [[ $methods_coverage < 70 ]];
             then
-                methods_coverage_text="\033[30;43m M: ${methods_coverage}% ${reset}"
+                methods_coverage_text=" M: ${methods_coverage}% ${reset}"
             else
-                methods_coverage_text="\033[30;42m M: ${methods_coverage}% ${reset}"
+                methods_coverage_text=" M: ${methods_coverage}% ${reset}"
             fi
 
             coverage_report="Coverage: ${classes_coverage_text} ${methods_coverage_text} ${lines_coverage_text}"
@@ -151,7 +151,7 @@ function __prompt_command() {
     coverage_report=""
     tests_report=""
 
-    time="${yellow}⏱ \A${reset}"
+    time="${yellow}\A${reset}"
     user="${green}\u${reset}"
     host="${purple}\H${reset}"
     pwd="${yellow}\w${reset}"

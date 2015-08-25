@@ -512,37 +512,37 @@ let g:PHP_vintage_case_default_indent = 1
 " Show markers for lines that ARE covered by tests (default = 1)
 "let g:phpqa_codecoverage_showcovered = 0
 " Syntastic {{{2
-Plugin 'scrooloose/syntastic'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list            = 1
-let g:syntastic_check_on_open            = 1
-let g:syntastic_check_on_wq              = 0
-let g:syntastic_aggregate_errors         = 1 " Display the errors from different tools together
-
-let g:syntastic_css_checkers             = ['prettycss']
-let g:syntastic_sass_checkers            = ['sass']
-let g:syntastic_scss_checkers            = ['sass']
-let g:syntastic_javascript_checkers      = [ 'eslint', 'eslint-grunt', 'eslint-plugin-requirejs', 'eslint-plugin-react', 'eslint-plugin-mocha' ]
-let g:syntastic_json_checkers            = ['jsonlint']
-let g:syntastic_less_checkers            = ['lessc']
-let g:syntastic_python_checkers          = ['pylint']
-let g:syntastic_markdown_checkers        = ['mdl']
-"let g:syntastic_php_checkers             = ['php', 'phpcs', 'phpmd']
-"let g:syntastic_php_checkers             = ['php', 'phpmd']
-let g:syntastic_sh_checkers              = ['shellcheck']
-let g:syntastic_yaml_checkers            = ['jsyaml']
-" To run explicit checkers run :SyntasticCheck phpcs phpmd
-"tell it when to run the checks
-let g:syntastic_mode_map = {
-            \ "mode": "active",
-            \ "active_filetypes": ["Javascript", "css"],
-            \ "passive_filetypes": []
-            \}
-
-" Initial settings to be revised after reading the manual {{{2
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" Plugin 'scrooloose/syntastic'
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list            = 1
+" let g:syntastic_check_on_open            = 1
+" let g:syntastic_check_on_wq              = 0
+" let g:syntastic_aggregate_errors         = 1 " Display the errors from different tools together
+" 
+" let g:syntastic_css_checkers             = ['prettycss']
+" let g:syntastic_sass_checkers            = ['sass']
+" let g:syntastic_scss_checkers            = ['sass']
+" let g:syntastic_javascript_checkers      = [ 'eslint', 'eslint-grunt', 'eslint-plugin-requirejs', 'eslint-plugin-react', 'eslint-plugin-mocha' ]
+" let g:syntastic_json_checkers            = ['jsonlint']
+" let g:syntastic_less_checkers            = ['lessc']
+" let g:syntastic_python_checkers          = ['pylint']
+" let g:syntastic_markdown_checkers        = ['mdl']
+" "let g:syntastic_php_checkers             = ['php', 'phpcs', 'phpmd']
+" "let g:syntastic_php_checkers             = ['php', 'phpmd']
+" let g:syntastic_sh_checkers              = ['shellcheck']
+" let g:syntastic_yaml_checkers            = ['jsyaml']
+" " To run explicit checkers run :SyntasticCheck phpcs phpmd
+" "tell it when to run the checks
+" let g:syntastic_mode_map = {
+"             \ "mode": "active",
+"             \ "active_filetypes": ["Javascript", "css"],
+"             \ "passive_filetypes": []
+"             \}
+" 
+" " Initial settings to be revised after reading the manual {{{2
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 " Vim-auto-save (disabled but try with tmux2) {{{2
 "Plugin '907th/vim-auto-save'
