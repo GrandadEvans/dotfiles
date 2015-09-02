@@ -278,3 +278,10 @@ function makeLink() {
     fi
 }
 
+
+# Add a function to change the shell if we are going into the vmcode dir
+function skybet() {
+    /bin/sh
+    cd /vmcode/vmcode
+    echo "You are now in ${PWD}"
+}

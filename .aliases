@@ -65,3 +65,5 @@ fi
 # Aliases for testing
  alias run-unit="codecept run unit --coverage --coverage-text ../../../tests/coverage_report.txt"
 
+alias unit="phpunit --coverage-text --coverage-html tests/_output/html --debug"
+
