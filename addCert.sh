@@ -6,7 +6,7 @@ function addCert() {
     certPathFull="$REPLY"
     certPath="$(echo -e "${certPathFull}" | tr -d '[[:space:]]')"
 
-    #certutil -d sql:$HOME/.pki/nssdb -A -t P -n "$nickname" -i "$certPath"
+    certutil -d sql:$HOME/.pki/nssdb -A -t P -n "$nickname" -i "$certPath"
     echo -e "\nRunning: \033[36mcertutil -d sql:$HOME/.pki/nssdb -A -t P -n \"$nickname\" -i \"$certPath\"\033[0m\n"
 
     if (( $? == 0 ));
