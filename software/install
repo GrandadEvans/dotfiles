@@ -55,6 +55,7 @@ fi
 echo -e "\nMaking links"
 makeLink "$dotfiles/.path"                    "$HOME"
 makeLink "$dotfiles/.vimrc"                   "$HOME"
+makeLink "$dotfiles/.npmrc"                   "$HOME"
 makeLink "$dotfiles/.bashrc"                  "$HOME"
 makeLink "$dotfiles/.aliases"                 "$HOME"
 makeLink "$dotfiles/.exports"                 "$HOME"
