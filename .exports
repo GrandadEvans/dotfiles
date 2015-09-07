@@ -31,10 +31,6 @@ export HISTTIMEFORMAT
 # Set the home for composer files
 export COMPOSER_HOME="$dotfiles_dir/.composer"
 
-
-# Set the home for npm files
-export NPM_CONFIG_PREFIX=$dotfiles_dir/npm/
-
 # Set the home for gem files
 export GEM_HOME=$dotfiles_dir/gem/
 export LOAD_PATH=$GEM_HOME
